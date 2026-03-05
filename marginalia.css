@@ -109,21 +109,21 @@
   font-style: italic;
   line-height: 1.4;
   color: var(--mg-accent-ink);
-  /* Signature 3D perspective tilt — body text funnels toward callout */
+  /* Signature 3D perspective tilt — near edge points into body text */
   transform-origin: right center;
-  transform: perspective(600px) rotateY(14deg) scale(0.92);
-  shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 14% 100%);
+  transform: perspective(600px) rotateY(-14deg) scale(0.92);
+  shape-outside: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
   shape-margin: 0.8rem;
 }
 
-/* Mirror: float left, tilt the other way */
+/* Mirror: float left, near edge points into body text */
 .mg-pull.mg-flip {
   float: left;
   clear: left;
   margin: 0.2rem 2rem 1.2rem 0;
   transform-origin: left center;
-  transform: perspective(600px) rotateY(-14deg) scale(0.92);
-  shape-outside: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+  transform: perspective(600px) rotateY(14deg) scale(0.92);
+  shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 14% 100%);
 }
 
 /* Responsive: flatten on mobile */
