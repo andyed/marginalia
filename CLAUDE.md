@@ -45,13 +45,13 @@ Typographic callout library. 6 components, CSS custom properties, zero dependenc
 ### Adding Components
 1. Add CSS in `marginalia.css` under a labeled section comment.
 2. If JS enhancement needed, add in `marginalia.js` and call from `init()`.
-3. Add demo in `demo.html` under a new `<section class="demo-section">`.
+3. Add demo in `index.html` under a new `<section class="demo-section">`.
 4. Update README component count and usage examples.
 
 ## File Structure
 ```
 marginalia.css      Core styles + custom properties
 marginalia.js       Optional: collapse animation, code copy
-demo.html           Live demo (GitHub Pages)
+index.html           Live demo (GitHub Pages)
 screenshots/        README visuals
 ```
