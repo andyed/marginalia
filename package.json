@@ -1,0 +1,25 @@
+{
+  "name": "marginalia",
+  "version": "0.1.0",
+  "description": "Typographic callout library — pull quotes, callouts, code blocks, badges, collapsible sections",
+  "style": "marginalia.css",
+  "main": "marginalia.js",
+  "files": [
+    "marginalia.css",
+    "marginalia.js"
+  ],
+  "keywords": [
+    "typography",
+    "callouts",
+    "pull-quotes",
+    "css",
+    "design-system"
+  ],
+  "author": "Andy Edmonds",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andyed/marginalia.git"
+  },
+  "homepage": "https://andyed.github.io/marginalia/"
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-mg-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marginalia — Typographic Callout Library</title>
+  <link rel="stylesheet" href="marginalia.css">
+  <style>
+    /* Demo page chrome — not part of the library */
+    :root {
+      --demo-bg: var(--mg-bg);
+      --demo-text: var(--mg-text);
+      --demo-muted: var(--mg-text-muted);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--demo-bg);
+      color: var(--demo-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .demo-container {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    .demo-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--mg-border);
+    }
+    .demo-header h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .demo-header h1 span { color: var(--mg-accent); }
+    .demo-header p {
+      color: var(--demo-muted);
+      font-size: 1rem;
+    }
+    .demo-section {
+      margin-bottom: 4rem;
+    }
+    .demo-section h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--demo-muted);
+      margin-bottom: 1.5rem;
+    }
+    .demo-section h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--mg-accent-ink);
+      margin: 2rem 0 0.75rem;
+    }
+    .demo-prose {
+      margin-bottom: 1.25rem;
+      color: var(--demo-text);
+      line-height: 1.65;
+    }
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--mg-bg2);
+      border: 1px solid var(--mg-border);
+      border-radius: var(--mg-radius);
+      color: var(--demo-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4em 0.8em;
+      cursor: pointer;
+      z-index: 100;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .theme-toggle:hover { color: var(--mg-accent); }
+    /* Badge row */
+    .badge-row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
+    /* Clearfix for pull quotes */
+    .demo-flow::after { content: ''; display: table; clear: both; }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" id="themeToggle">Light</button>
+
+  <div class="demo-container">
+
+    <header class="demo-header">
+      <h1><span>Marginalia</span></h1>
+      <p>Typographic callout library. 6 components, CSS custom properties, zero dependencies.</p>
+    </header>
+
+    <!-- ── 1. Callouts ──────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>1. Callouts</h2>
+
+      <div class="mg-callout" data-type="note">
+        <p><strong>Note:</strong> The cortical magnification function falls off roughly as <code class="mg-inline-code">1 / (1 + e/e2)</code> where <code class="mg-inline-code">e2</code> varies by visual field meridian.</p>
+      </div>
+
+      <div class="mg-callout" data-type="tip">
+        <p><strong>Tip:</strong> Use <code class="mg-inline-code">shape-outside</code> with pull quotes to create text that wraps along the perspective tilt, not just a rectangular float.</p>
+      </div>
+
+      <div class="mg-callout" data-type="warning">
+        <p><strong>Warning:</strong> MIP level selection at extreme eccentricities can produce visible banding. Clamp to <code class="mg-inline-code">maxLod - 1</code> for smoother falloff.</p>
+      </div>
+
+      <div class="mg-callout" data-type="important">
+        <p><strong>Important:</strong> The 3D perspective transform uses <code class="mg-inline-code">transform: perspective(600px) rotateY(14deg)</code>. This is removed on viewports below 720px for readability.</p>
+      </div>
+    </section>
+
+    <!-- ── 2. Pull Quotes ───────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>2. Pull Quotes</h2>
+
+      <div class="demo-flow">
+        <aside class="mg-pull">
+          The MIP chain wasn't designed to model the retina. They converged on the same structure because progressive spatial pooling solves the same problem.
+        </aside>
+        <p class="demo-prose">
+          Hardware texture MIP chains and biological retinal processing share a structural
+          parallel that runs deeper than analogy. Both systems face the same computational
+          problem: reducing high-resolution spatial information into progressively coarser
+          representations while preserving the features that matter for downstream processing.
+        </p>
+        <p class="demo-prose">
+          The GPU MIP chain builds power-of-two reductions through box filtering.
+          The retina builds a spatial frequency cascade through center-surround receptive
+          fields whose sizes increase with eccentricity from the fovea. Different mechanisms,
+          same computational strategy, same mathematical structure — a Laplacian pyramid.
+        </p>
+        <p class="demo-prose">
+          This convergence isn't mysterious. Progressive spatial pooling is simply an efficient
+          solution to the problem of representing visual information at multiple scales. Evolution
+          and engineering arrived at the same answer independently, which is exactly what you'd
+          expect for a well-constrained optimization problem.
+        </p>
+      </div>
+
+      <h3>Flipped (left float)</h3>
+
+      <div class="demo-flow">
+        <aside class="mg-pull mg-flip">
+          Every saccade is a decision. The visual system bets 200ms of processing time on a location, guided by a saliency map it built from the last fixation.
+        </aside>
+        <p class="demo-prose">
+          The oculomotor system makes roughly three saccadic eye movements per second during
+          active viewing. Each saccade commits the visual system to a new fixation point for
+          200-300 milliseconds. The choice of where to look next is informed by peripheral
+          vision — specifically, the low-spatial-frequency information available in the
+          parafoveal and peripheral visual field during the current fixation.
+        </p>
+        <p class="demo-prose">
+          Saliency models attempt to predict these fixation sequences from image statistics.
+          The best-performing models combine bottom-up feature contrast (color, orientation,
+          spatial frequency) with top-down task demands and scene grammar — the learned
+          statistical regularities of where objects tend to appear in natural scenes.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 3. Code Block ────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>3. Code Blocks</h2>
+
+      <pre class="mg-code" data-lang="glsl">// Lorenz attractor step — the heart of Psychodeli+'s fractal engine
+vec3 lorenzStep(vec3 p, float sigma, float rho, float beta, float dt) {
+    return p + vec3(
+        sigma * (p.y - p.x),
+        p.x * (rho - p.z) - p.y,
+        p.x * p.y - beta * p.z
+    ) * dt;
+}</pre>
+
+      <pre class="mg-code" data-lang="js">// Cortical magnification — FOVI model (Blauch, Alvarez & Konkle 2026)
+function corticalMagnification(eccentricity, e2 = 0.75) {
+  return 1 / (1 + eccentricity / e2);
+}</pre>
+
+      <p class="demo-prose">
+        Inline code: The <code class="mg-inline-code">shape-outside</code> property creates
+        a polygon that text wraps around, matching the visual tilt of the
+        <code class="mg-inline-code">perspective()</code> transform.
+      </p>
+    </section>
+
+    <!-- ── 4. Badges ────────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>4. Badges</h2>
+
+      <div class="badge-row">
+        <span class="mg-badge">Default</span>
+        <span class="mg-badge" data-type="tip">Tip</span>
+        <span class="mg-badge" data-type="warning">Warning</span>
+        <span class="mg-badge" data-type="important">Important</span>
+      </div>
+
+      <p class="demo-prose">
+        Badges work inline: this feature is <span class="mg-badge">New</span> and requires
+        WebGL 2 <span class="mg-badge" data-type="warning">GPU</span> support.
+      </p>
+    </section>
+
+    <!-- ── 5. Collapse ──────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>5. Collapsible Sections</h2>
+
+      <details class="mg-collapse">
+        <summary>Mathematical derivation: Cortical magnification function</summary>
+        <div class="mg-collapse-body">
+          <p>
+            The cortical magnification factor M describes how many millimeters of cortical
+            surface represent one degree of visual angle at eccentricity e:
+          </p>
+          <p>
+            <code class="mg-inline-code">M(e) = M0 / (1 + e/e2)</code>
+          </p>
+          <p>
+            Where M0 is the foveal magnification (~15-20 mm/deg for V1) and e2 is the
+            eccentricity at which M drops to half its foveal value (~0.75 deg for V1,
+            varying by meridian). This hyperbolic falloff means roughly half of V1 is
+            devoted to the central 2-3 degrees of the visual field.
+          </p>
+        </div>
+      </details>
+
+      <details class="mg-collapse">
+        <summary>Implementation note: shape-outside polygon coordinates</summary>
+        <div class="mg-collapse-body">
+          <p>
+            The <code class="mg-inline-code">shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 14% 100%)</code>
+            creates a trapezoid that approximates the visual footprint of the perspective-tilted
+            pull quote. The 14% bottom-left inset roughly matches the apparent narrowing from
+            <code class="mg-inline-code">rotateY(14deg)</code> at the default perspective distance.
+          </p>
+          <p>
+            For the flipped variant, the polygon mirrors:
+            <code class="mg-inline-code">polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%)</code>.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ── 6. Highlight ─────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>6. Inline Highlights</h2>
+
+      <p class="demo-prose">
+        The <mark class="mg-mark">foveal region</mark> covers roughly 2 degrees of visual angle —
+        about the width of your thumbnail at arm's length. Everything beyond that
+        <mark class="mg-mark">peripheral field</mark> is processed at progressively lower
+        spatial resolution, following the cortical magnification function described above.
+      </p>
+    </section>
+
+    <!-- ── Usage ────────────────────────────────────────────────────── -->
+    <section class="demo-section" style="border-top: 1px solid var(--mg-border); padding-top: 3rem;">
+      <h2>Usage</h2>
+
+      <pre class="mg-code" data-lang="html">&lt;!-- Include in your page --&gt;
+&lt;link rel="stylesheet" href="marginalia.css"&gt;
+&lt;script src="marginalia.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- Callout --&gt;
+&lt;div class="mg-callout" data-type="note"&gt;
+  &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Your content here.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Pull quote --&gt;
+&lt;aside class="mg-pull"&gt;Your quote text.&lt;/aside&gt;
+
+&lt;!-- Code block --&gt;
+&lt;pre class="mg-code" data-lang="js"&gt;const x = 42;&lt;/pre&gt;
+
+&lt;!-- Badge --&gt;
+&lt;span class="mg-badge"&gt;Label&lt;/span&gt;
+
+&lt;!-- Collapse --&gt;
+&lt;details class="mg-collapse"&gt;
+  &lt;summary&gt;Title&lt;/summary&gt;
+  &lt;div class="mg-collapse-body"&gt;Content&lt;/div&gt;
+&lt;/details&gt;
+
+&lt;!-- Highlight --&gt;
+&lt;mark class="mg-mark"&gt;highlighted text&lt;/mark&gt;</pre>
+    </section>
+
+  </div>
+
+  <script src="marginalia.js"></script>
+  <script>
+    // Theme toggle for demo
+    var toggle = document.getElementById('themeToggle');
+    var root = document.documentElement;
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-mg-theme');
+      if (current === 'dark') {
+        root.setAttribute('data-mg-theme', 'light');
+        toggle.textContent = 'Dark';
+      } else {
+        root.setAttribute('data-mg-theme', 'dark');
+        toggle.textContent = 'Light';
+      }
+    });
+  </script>
+</body>
+</html>

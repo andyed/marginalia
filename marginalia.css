@@ -1,0 +1,305 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Marginalia — Typographic Callout Library
+   v0.1.0 | MIT License | github.com/andyed/marginalia
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Theme tokens ────────────────────────────────────────────────────────── */
+
+:root {
+  --mg-bg:          #0a0a0f;
+  --mg-bg2:         #0f1117;
+  --mg-text:        #e0e0ec;
+  --mg-text-muted:  #8a8aa0;
+  --mg-border:      rgba(255, 255, 255, 0.08);
+  --mg-accent:      #50b4c8;
+  --mg-accent-rgb:  80, 180, 200;
+  --mg-accent-ink:  #7dd4e4;
+  --mg-note:        #50b4c8;
+  --mg-tip:         #4caf50;
+  --mg-warning:     #e6a817;
+  --mg-important:   #e05252;
+  --mg-radius:      4px;
+  --mg-font-mono:   'SF Mono', 'Fira Code', Consolas, 'Liberation Mono', monospace;
+}
+
+/* Light theme — activate with data-theme="light" on any ancestor or via OS preference */
+[data-theme="light"],
+[data-mg-theme="light"] {
+  --mg-bg:          #fafafa;
+  --mg-bg2:         #f0f0f4;
+  --mg-text:        #1a1a2e;
+  --mg-text-muted:  #555570;
+  --mg-border:      rgba(0, 0, 0, 0.1);
+  --mg-accent:      #0e7490;
+  --mg-accent-rgb:  14, 116, 144;
+  --mg-accent-ink:  #0e7490;
+  --mg-note:        #0e7490;
+  --mg-tip:         #2e7d32;
+  --mg-warning:     #c67f00;
+  --mg-important:   #c62828;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-mg-theme="dark"]) {
+    --mg-bg:          #fafafa;
+    --mg-bg2:         #f0f0f4;
+    --mg-text:        #1a1a2e;
+    --mg-text-muted:  #555570;
+    --mg-border:      rgba(0, 0, 0, 0.1);
+    --mg-accent:      #0e7490;
+    --mg-accent-rgb:  14, 116, 144;
+    --mg-accent-ink:  #0e7490;
+    --mg-note:        #0e7490;
+    --mg-tip:         #2e7d32;
+    --mg-warning:     #c67f00;
+    --mg-important:   #c62828;
+  }
+}
+
+
+/* ── 1. Callout ──────────────────────────────────────────────────────────── */
+
+.mg-callout {
+  border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+  background: var(--mg-bg2);
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+  color: var(--mg-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.mg-callout strong {
+  color: var(--mg-accent-ink);
+  font-style: normal;
+}
+
+.mg-callout p {
+  margin: 0 0 0.5rem;
+}
+
+.mg-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Variant border colors via data-type */
+.mg-callout[data-type="note"]      { border-left-color: var(--mg-note); }
+.mg-callout[data-type="tip"]       { border-left-color: var(--mg-tip); }
+.mg-callout[data-type="warning"]   { border-left-color: var(--mg-warning); }
+.mg-callout[data-type="important"] { border-left-color: var(--mg-important); }
+
+/* Tinted backgrounds per variant */
+.mg-callout[data-type="note"]      { background: rgba(var(--mg-accent-rgb), 0.06); }
+.mg-callout[data-type="tip"]       { background: rgba(76, 175, 80, 0.06); }
+.mg-callout[data-type="warning"]   { background: rgba(230, 168, 23, 0.06); }
+.mg-callout[data-type="important"] { background: rgba(224, 82, 82, 0.06); }
+
+
+/* ── 2. Pull quote ───────────────────────────────────────────────────────── */
+
+.mg-pull {
+  float: right;
+  clear: right;
+  width: 38%;
+  margin: 0.2rem 0 1.2rem 2rem;
+  padding: 0.8rem 0 0.8rem 1rem;
+  border-left: 3px solid var(--mg-accent);
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--mg-accent-ink);
+  /* Signature 3D perspective tilt — body text funnels toward callout */
+  transform-origin: right center;
+  transform: perspective(600px) rotateY(14deg) scale(0.92);
+  shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 14% 100%);
+  shape-margin: 0.8rem;
+}
+
+/* Mirror: float left, tilt the other way */
+.mg-pull.mg-flip {
+  float: left;
+  clear: left;
+  margin: 0.2rem 2rem 1.2rem 0;
+  transform-origin: left center;
+  transform: perspective(600px) rotateY(-14deg) scale(0.92);
+  shape-outside: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Responsive: flatten on mobile */
+@media (max-width: 720px) {
+  .mg-pull,
+  .mg-pull.mg-flip {
+    float: none;
+    width: auto;
+    margin: 1.2rem 0;
+    font-size: 1.1rem;
+    transform: none;
+    transform-origin: center center;
+    shape-outside: none;
+  }
+}
+
+
+/* ── 3. Code block ───────────────────────────────────────────────────────── */
+
+.mg-code {
+  font-family: var(--mg-font-mono);
+  font-size: 0.85em;
+  background: var(--mg-bg2);
+  border-left: 3px solid rgba(var(--mg-accent-rgb), 0.3);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+  overflow-x: auto;
+  line-height: 1.55;
+  color: var(--mg-text);
+  position: relative;
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+/* Language label */
+.mg-code[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mg-text-muted);
+  pointer-events: none;
+}
+
+/* Inline code */
+.mg-inline-code {
+  font-family: var(--mg-font-mono);
+  font-size: 0.85em;
+  background: rgba(var(--mg-accent-rgb), 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  color: var(--mg-accent-ink);
+}
+
+/* Copy button (injected by marginalia.js) */
+.mg-code .mg-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: rgba(var(--mg-accent-rgb), 0.12);
+  border: 1px solid rgba(var(--mg-accent-rgb), 0.2);
+  border-radius: 3px;
+  color: var(--mg-text-muted);
+  font-family: var(--mg-font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.mg-code:hover .mg-copy-btn {
+  opacity: 1;
+}
+
+.mg-code .mg-copy-btn:hover {
+  background: rgba(var(--mg-accent-rgb), 0.25);
+  color: var(--mg-accent-ink);
+}
+
+/* Shift language label left when copy button is present */
+.mg-code:has(.mg-copy-btn)[data-lang]::before {
+  right: 4rem;
+}
+
+
+/* ── 4. Badge ────────────────────────────────────────────────────────────── */
+
+.mg-badge {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mg-accent);
+  background: rgba(var(--mg-accent-rgb), 0.1);
+  border: 1px solid rgba(var(--mg-accent-rgb), 0.3);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+/* Semantic badge variants */
+.mg-badge[data-type="tip"]       { color: var(--mg-tip);       background: rgba(76, 175, 80, 0.1);  border-color: rgba(76, 175, 80, 0.3); }
+.mg-badge[data-type="warning"]   { color: var(--mg-warning);   background: rgba(230, 168, 23, 0.1); border-color: rgba(230, 168, 23, 0.3); }
+.mg-badge[data-type="important"] { color: var(--mg-important); background: rgba(224, 82, 82, 0.1);  border-color: rgba(224, 82, 82, 0.3); }
+
+
+/* ── 5. Collapse ─────────────────────────────────────────────────────────── */
+
+.mg-collapse {
+  border: 1px solid var(--mg-border);
+  border-radius: var(--mg-radius);
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.mg-collapse summary {
+  padding: 0.85rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--mg-accent);
+  background: var(--mg-bg2);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.mg-collapse summary::-webkit-details-marker {
+  display: none;
+}
+
+.mg-collapse summary::before {
+  content: '\25B6'; /* ▶ */
+  font-size: 0.6rem;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.mg-collapse[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.mg-collapse .mg-collapse-body {
+  padding: 1.2rem 1.5rem;
+  background: var(--mg-bg2);
+  border-top: 1px solid var(--mg-border);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--mg-text);
+}
+
+.mg-collapse .mg-collapse-body p {
+  margin: 0 0 0.8rem;
+}
+
+.mg-collapse .mg-collapse-body p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ── 6. Highlight ────────────────────────────────────────────────────────── */
+
+.mg-mark {
+  background: rgba(var(--mg-accent-rgb), 0.15);
+  color: var(--mg-accent-ink);
+  padding: 0.05em 0.25em;
+  border-radius: 2px;
+}
