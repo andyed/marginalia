@@ -102,6 +102,60 @@
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
+    <!-- ── Showcase: All Components ────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>Showcase</h2>
+
+      <div class="demo-flow">
+        <aside class="mg-pull">
+          The retina is not a camera. It is the first stage of a computational pipeline that begins filtering before signals leave the eye.
+        </aside>
+
+        <p class="mg-dropcap demo-prose">
+          Vision begins at the retina, where 130 million photoreceptors compress into
+          1.2 million ganglion cell axons — a <mark class="mg-mark">100:1 reduction</mark>
+          before information reaches the brain. This isn't a bottleneck. It's an
+          editorial decision, made in parallel across the visual field, about what
+          matters enough to transmit.
+        </p>
+
+        <div class="mg-callout" data-type="note">
+          <p><strong>Note:</strong> Ganglion cell density peaks at ~35,000 cells/mm² in the fovea and drops to ~5,000 cells/mm² at 10° eccentricity. The <code class="mg-inline-code">mg-dropcap</code> above mirrors this hierarchy — the initial letter demands foveal attention.</p>
+        </div>
+
+        <p class="demo-prose">
+          Center-surround receptive fields perform edge detection and contrast
+          normalization before any cortical processing occurs. Midget cells in the
+          fovea carry high-acuity color-opponent signals. Parasol cells across the
+          periphery prioritize motion and luminance transients. Two parallel channels,
+          tuned to different statistics, feeding <span class="mg-badge">V1</span>
+          <span class="mg-badge" data-type="tip">LGN</span>
+          <span class="mg-badge" data-type="warning">SC</span> simultaneously.
+        </p>
+
+        <pre class="mg-code" data-lang="glsl">// Retinal ganglion cell density falloff (Watson 2014)
+float ganglionDensity(float eccentricity) {
+    float fovealPeak = 35000.0; // cells/mm²
+    float e2 = 1.72;           // half-density eccentricity
+    return fovealPeak / pow(1.0 + eccentricity / e2, 2.0);
+}</pre>
+
+        <details class="mg-collapse">
+          <summary>Why this matters for rendering</summary>
+          <div class="mg-collapse-body">
+            <p>
+              Foveated rendering exploits this density falloff. If you match your
+              shader's spatial frequency budget to the retina's sampling capacity at
+              each eccentricity, you can reduce fragment processing by 60-70% with
+              no perceptible quality loss. The <code class="mg-inline-code">ganglionDensity()</code>
+              function above is the biological ground truth that rendering LOD curves
+              approximate.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+
     <!-- ── 1. Callouts ──────────────────────────────────────────────── -->
     <section class="demo-section">
       <h2>1. Callouts</h2>
