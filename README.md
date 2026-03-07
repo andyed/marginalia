@@ -4,6 +4,8 @@ Typographic callout library. 7 components, CSS custom properties, zero dependenc
 
 Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts.
 
+![Marginalia showcase — all 7 components](images/showcase_03072026.png)
+
 **[Live Demo & Documentation](https://andyed.github.io/marginalia/)**
 
 ## Install
