@@ -98,7 +98,7 @@
 
     <header class="demo-header">
       <h1><span>Marginalia</span></h1>
-      <p>Typographic callout library. 6 components, CSS custom properties, zero dependencies.</p>
+      <p>Typographic callout library. 7 components, CSS custom properties, zero dependencies.</p>
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
@@ -267,6 +267,29 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
       </p>
     </section>
 
+    <!-- ── 7. Drop Cap ──────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>7. Drop Caps</h2>
+
+      <p class="mg-dropcap demo-prose">
+        Peripheral vision is not blurry vision. The retina's ganglion cell density
+        drops with eccentricity, but peripheral processing excels at detecting motion,
+        flicker, and large-scale spatial structure. The visual system trades resolution
+        for temporal sensitivity as you move away from the fovea — a design tradeoff,
+        not a deficiency.
+      </p>
+
+      <h3>Ornate variant</h3>
+
+      <p class="mg-dropcap demo-prose" data-type="ornate">
+        Every typeface carries its own history. The drop cap, or lettrine, dates to
+        hand-illuminated manuscripts where monks painted the opening letter in gold
+        leaf and lapis lazuli. Modern typography inherited the convention stripped of
+        its gilding but not its function: signal the start, reward the eye, set the
+        pace for what follows.
+      </p>
+    </section>
+
     <!-- ── Usage ────────────────────────────────────────────────────── -->
     <section class="demo-section" style="border-top: 1px solid var(--mg-border); padding-top: 3rem;">
       <h2>Usage</h2>
@@ -296,7 +319,11 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
 &lt;/details&gt;
 
 &lt;!-- Highlight --&gt;
-&lt;mark class="mg-mark"&gt;highlighted text&lt;/mark&gt;</pre>
+&lt;mark class="mg-mark"&gt;highlighted text&lt;/mark&gt;
+
+&lt;!-- Drop cap --&gt;
+&lt;p class="mg-dropcap"&gt;Your opening paragraph.&lt;/p&gt;
+&lt;p class="mg-dropcap" data-type="ornate"&gt;Ornate variant with border accent.&lt;/p&gt;</pre>
     </section>
 
   </div>

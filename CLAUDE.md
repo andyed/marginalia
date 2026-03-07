@@ -4,7 +4,7 @@ Design system contract for AI tools extending or modifying Marginalia.
 
 ## Project
 
-Typographic callout library. 6 components, CSS custom properties, zero dependencies. Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/).
+Typographic callout library. 7 components, CSS custom properties, zero dependencies. Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/).
 
 ## Rules
 

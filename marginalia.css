@@ -303,3 +303,29 @@
   padding: 0.05em 0.25em;
   border-radius: 2px;
 }
+
+
+/* ── 7. Drop Cap ─────────────────────────────────────────────────────────── */
+
+.mg-dropcap::first-letter {
+  float: left;
+  font-size: 3.8em;
+  line-height: 0.8;
+  padding-right: 0.08em;
+  margin-top: 0.05em;
+  font-weight: 700;
+  color: var(--mg-accent-ink);
+}
+
+/* Ornate variant — adds the signature left border accent */
+.mg-dropcap[data-type="ornate"]::first-letter {
+  border-left: 3px solid var(--mg-accent);
+  padding-left: 0.12em;
+}
+
+/* Responsive: reduce size on small viewports */
+@media (max-width: 720px) {
+  .mg-dropcap::first-letter {
+    font-size: 2.8em;
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "marginalia",
   "version": "0.1.0",
-  "description": "Typographic callout library — pull quotes, callouts, code blocks, badges, collapsible sections",
+  "description": "Typographic callout library — pull quotes, callouts, code blocks, badges, collapsible sections, drop caps",
   "style": "marginalia.css",
   "main": "marginalia.js",
   "files": [
