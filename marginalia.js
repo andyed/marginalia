@@ -79,11 +79,72 @@
     });
   }
 
+  /* ── Footnote popover positioning + tap-to-toggle ────────────────────── */
+
+  function initFootnotes() {
+    var activeFootnote = null;
+
+    function closeActive() {
+      if (activeFootnote) {
+        activeFootnote.classList.remove('mg-fn-open');
+        activeFootnote = null;
+      }
+    }
+
+    function positionPopover(body) {
+      body.classList.remove('mg-fn-anchor-left', 'mg-fn-anchor-right');
+      var rect = body.getBoundingClientRect();
+      if (rect.left < 8) {
+        body.classList.add('mg-fn-anchor-left');
+      } else if (rect.right > window.innerWidth - 8) {
+        body.classList.add('mg-fn-anchor-right');
+      }
+    }
+
+    document.querySelectorAll('.mg-fn').forEach(function (fn) {
+      if (fn.dataset.mgFootnote) return;
+      fn.dataset.mgFootnote = 'true';
+
+      var ref = fn.querySelector('.mg-fn-ref');
+      var body = fn.querySelector('.mg-fn-body');
+      if (!ref || !body) return;
+
+      // Hover positioning (desktop)
+      fn.addEventListener('mouseenter', function () { positionPopover(body); });
+      fn.addEventListener('focusin', function () { positionPopover(body); });
+
+      // Tap-to-toggle (mobile + desktop click)
+      ref.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (fn === activeFootnote) {
+          closeActive();
+        } else {
+          closeActive();
+          fn.classList.add('mg-fn-open');
+          activeFootnote = fn;
+          positionPopover(body);
+        }
+      });
+    });
+
+    // Dismiss on outside tap — single listener, idempotent
+    if (!document.body.dataset.mgFnDismiss) {
+      document.body.dataset.mgFnDismiss = 'true';
+      document.addEventListener('click', function (e) {
+        if (activeFootnote && !activeFootnote.contains(e.target)) {
+          closeActive();
+        }
+      });
+    }
+  }
+
   /* ── Init ─────────────────────────────────────────────────────────────── */
 
   function init() {
     initCopyButtons();
     initCollapseAnimation();
+    initFootnotes();
   }
 
   if (document.readyState === 'loading') {

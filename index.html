@@ -98,7 +98,7 @@
 
     <header class="demo-header">
       <h1><span>Marginalia</span></h1>
-      <p>Typographic callout library. 7 components, CSS custom properties, zero dependencies.</p>
+      <p>Typographic callout library. 8 components, CSS custom properties, zero dependencies.</p>
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
@@ -175,6 +175,16 @@ float ganglionDensity(float eccentricity) {
       <div class="mg-callout" data-type="important">
         <p><strong>Important:</strong> The 3D perspective transform uses <code class="mg-inline-code">transform: perspective(600px) rotateY(14deg)</code>. This is removed on viewports below 720px for readability.</p>
       </div>
+
+      <h3>Without vertical bar</h3>
+
+      <div class="mg-callout" data-type="note" data-bar="none">
+        <p><strong>Note:</strong> Add <code class="mg-inline-code">data-bar="none"</code> to any callout, pull quote, or code block to remove the left border accent. The tinted background still provides visual separation.</p>
+      </div>
+
+      <div class="mg-callout" data-type="warning" data-bar="none">
+        <p><strong>Warning:</strong> Without the border, the background tint carries the semantic color. Works best with typed variants that have distinct tints.</p>
+      </div>
     </section>
 
     <!-- ── 2. Pull Quotes ───────────────────────────────────────────── -->
@@ -202,6 +212,26 @@ float ganglionDensity(float eccentricity) {
           solution to the problem of representing visual information at multiple scales. Evolution
           and engineering arrived at the same answer independently, which is exactly what you'd
           expect for a well-constrained optimization problem.
+        </p>
+      </div>
+
+      <h3>Flat (no 3D transform)</h3>
+
+      <div class="demo-flow">
+        <aside class="mg-pull mg-flat">
+          Crowding — not blur — is the primary limit on peripheral object recognition. Flanking features merge into texture-like representations that preserve summary statistics but lose individual identity.
+        </aside>
+        <p class="demo-prose">
+          The <code class="mg-inline-code">mg-flat</code> modifier removes the perspective
+          tilt while keeping the sidebar float behavior. This works for content where the
+          3D effect would feel excessive — technical asides, definition boxes, or
+          supplementary notes that sit alongside body text without demanding attention
+          through visual skew.
+        </p>
+        <p class="demo-prose">
+          Flat pull quotes still float right by default and can be combined with
+          <code class="mg-inline-code">mg-flip</code> to float left. The left border
+          accent remains as the visual anchor.
         </p>
       </div>
 
@@ -344,6 +374,43 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
       </p>
     </section>
 
+    <!-- ── 8. Footnotes ─────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>8. Footnotes</h2>
+
+      <p class="demo-prose">
+        The fovea covers roughly 2 degrees of visual
+        angle<span class="mg-fn"><a class="mg-fn-ref" tabindex="0"></a><span class="mg-fn-body">About
+        the width of your thumbnail at arm's length, or roughly 1.5mm on the retina.
+        Ganglion cell density peaks here at ~35,000 cells/mm².</span></span>
+        but accounts for over half of the neural real estate in primary visual
+        cortex<span class="mg-fn"><a class="mg-fn-ref" tabindex="0"></a><span class="mg-fn-body">This
+        disproportionate allocation is described by the cortical magnification function:
+        M(e) = M₀ / (1 + e/e₂), where M₀ ≈ 15–20 mm/deg for V1.</span></span>.
+        This overrepresentation is not waste — it's the biological cost of high-acuity
+        central vision<span class="mg-fn"><a class="mg-fn-ref" tabindex="0"></a><span class="mg-fn-body">Peripheral
+        vision compensates with superior temporal resolution and motion sensitivity,
+        making it the dominant early-warning system for saccade targeting.</span></span>.
+      </p>
+
+      <p class="demo-prose">
+        Footnote markers auto-number via CSS counters. Content lives inline with its
+        reference — no bottom-of-page lists to maintain. Hover or tab to a marker to
+        reveal the note. Works without JavaScript; JS enhances popover positioning
+        near viewport edges.
+      </p>
+
+      <h3>Manual numbering</h3>
+
+      <p class="demo-prose">
+        You can also provide explicit marker text: some
+        claim<span class="mg-fn"><a class="mg-fn-ref" tabindex="0">*</a><span class="mg-fn-body">This
+        uses a manual marker instead of auto-numbering. Just put text inside the
+        <code class="mg-inline-code">mg-fn-ref</code> element.</span></span>
+        rather than a number.
+      </p>
+    </section>
+
     <!-- ── Usage ────────────────────────────────────────────────────── -->
     <section class="demo-section" style="border-top: 1px solid var(--mg-border); padding-top: 3rem;">
       <h2>Usage</h2>
@@ -359,6 +426,7 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
 
 &lt;!-- Pull quote --&gt;
 &lt;aside class="mg-pull"&gt;Your quote text.&lt;/aside&gt;
+&lt;aside class="mg-pull mg-flat"&gt;Flat sidebar (no 3D tilt).&lt;/aside&gt;
 
 &lt;!-- Code block --&gt;
 &lt;pre class="mg-code" data-lang="js"&gt;const x = 42;&lt;/pre&gt;
@@ -377,7 +445,16 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
 
 &lt;!-- Drop cap --&gt;
 &lt;p class="mg-dropcap"&gt;Your opening paragraph.&lt;/p&gt;
-&lt;p class="mg-dropcap" data-type="ornate"&gt;Ornate variant with border accent.&lt;/p&gt;</pre>
+&lt;p class="mg-dropcap" data-type="ornate"&gt;Ornate variant with border accent.&lt;/p&gt;
+
+&lt;!-- Footnote (auto-numbered) --&gt;
+Text&lt;span class="mg-fn"&gt;
+  &lt;a class="mg-fn-ref" tabindex="0"&gt;&lt;/a&gt;
+  &lt;span class="mg-fn-body"&gt;Footnote content shown on hover/focus.&lt;/span&gt;
+&lt;/span&gt; continues.
+
+&lt;!-- Remove vertical bar from any component --&gt;
+&lt;div class="mg-callout" data-type="note" data-bar="none"&gt;No left border.&lt;/div&gt;</pre>
     </section>
 
   </div>

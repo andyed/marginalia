@@ -126,6 +126,12 @@
   shape-outside: polygon(0% 0%, 100% 0%, 100% 100%, 14% 100%);
 }
 
+/* Flat variant — sidebar float without 3D transform */
+.mg-pull.mg-flat {
+  transform: none;
+  shape-outside: none;
+}
+
 /* Responsive: flatten on mobile */
 @media (max-width: 720px) {
   .mg-pull,
@@ -329,3 +335,132 @@
     font-size: 2.8em;
   }
 }
+
+
+/* ── 8. Footnotes ───────────────────────────────────────────────────────── */
+
+/* Counter on the nearest scoping ancestor (article, section, or body) */
+article, section, .mg-fn-scope, body {
+  counter-reset: mg-fn;
+}
+
+.mg-fn {
+  position: relative;
+  display: inline;
+}
+
+.mg-fn-ref {
+  counter-increment: mg-fn;
+  cursor: pointer;
+  font-size: 0.7em;
+  font-weight: 700;
+  color: var(--mg-accent);
+  vertical-align: super;
+  line-height: 1;
+  text-decoration: none;
+  padding: 0 0.15em;
+}
+
+/* Auto-number when content is empty (JS or CSS counter) */
+.mg-fn-ref:empty::after {
+  content: counter(mg-fn);
+}
+
+.mg-fn-ref:hover,
+.mg-fn-ref:focus {
+  color: var(--mg-accent-ink);
+}
+
+.mg-fn-body {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.4rem);
+  transform: translateX(-50%);
+  width: max(16rem, 30vw);
+  max-width: 90vw;
+  padding: 0.6rem 1rem;
+  border-left: 3px solid var(--mg-accent);
+  background: var(--mg-bg2);
+  border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+  color: var(--mg-text);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Show on hover, keyboard focus, or tap (JS adds mg-fn-open) */
+.mg-fn:hover .mg-fn-body,
+.mg-fn:focus-within .mg-fn-body,
+.mg-fn.mg-fn-open .mg-fn-body {
+  display: block;
+}
+
+/* Anchor the popover to right edge if near left margin */
+.mg-fn-body.mg-fn-anchor-right {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
+/* Anchor to left edge if near right margin */
+.mg-fn-body.mg-fn-anchor-left {
+  left: 0;
+  transform: none;
+}
+
+/* Light theme: softer shadow */
+[data-theme="light"] .mg-fn-body,
+[data-mg-theme="light"] .mg-fn-body {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile: larger tap target, full-width popover */
+@media (max-width: 720px) {
+  .mg-fn-ref {
+    padding: 0.3em;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mg-fn-body {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    top: auto;
+    width: auto;
+    max-width: none;
+    transform: none;
+    border-radius: var(--mg-radius);
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+  }
+  .mg-fn-body.mg-fn-anchor-left,
+  .mg-fn-body.mg-fn-anchor-right {
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+  }
+}
+
+
+/* ── Utilities ──────────────────────────────────────────────────────────── */
+
+/* Remove left border from any bordered component */
+[data-bar="none"].mg-callout,
+[data-bar="none"].mg-pull,
+[data-bar="none"].mg-code {
+  border-left: 0 none;
+  border-radius: var(--mg-radius);
+}
+
+/* Stronger tint when bar is removed — background carries the semantic signal */
+.mg-callout[data-bar="none"][data-type="note"]      { background: rgba(var(--mg-accent-rgb), 0.10); }
+.mg-callout[data-bar="none"][data-type="tip"]       { background: rgba(76, 175, 80, 0.10); }
+.mg-callout[data-bar="none"][data-type="warning"]   { background: rgba(230, 168, 23, 0.10); }
+.mg-callout[data-bar="none"][data-type="important"] { background: rgba(224, 82, 82, 0.10); }

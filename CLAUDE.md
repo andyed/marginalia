@@ -40,7 +40,7 @@ Typographic callout library. 7 components, CSS custom properties, zero dependenc
 - No build step. Ship raw CSS and JS.
 - No dependencies.
 - JS uses `'use strict'` and works in all browsers supporting `<details>` and `navigator.clipboard`.
-- Keep `marginalia.css` under 300 lines and `marginalia.js` under 150 lines.
+- Keep `marginalia.css` under 500 lines and `marginalia.js` under 200 lines.
 
 ### Adding Components
 1. Add CSS in `marginalia.css` under a labeled section comment.
