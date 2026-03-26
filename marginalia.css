@@ -449,6 +449,39 @@ article, section, .mg-fn-scope, body {
 }
 
 
+/* ── 9. Gallery / Lightbox ──────────────────────────────────────────────── */
+
+.mg-gallery { margin: 1.5rem 0; }
+.mg-gallery figure { margin: 0; }
+.mg-gallery img { width: 100%; display: block; cursor: zoom-in; border-radius: var(--mg-radius); }
+.mg-gallery figcaption {
+  font-size: 0.82rem; line-height: 1.45; color: var(--mg-text-muted);
+  padding: 0.5rem 0.25rem 0;
+}
+.mg-gallery[data-type="compare"] {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+}
+@media (max-width: 720px) {
+  .mg-gallery[data-type="compare"] { grid-template-columns: 1fr; }
+}
+
+/* Lightbox overlay (injected by marginalia.js) */
+.mg-lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  cursor: zoom-out; padding: 2rem;
+}
+.mg-lightbox img {
+  max-width: 90vw; max-height: 85vh; object-fit: contain;
+  border-radius: var(--mg-radius); cursor: default;
+}
+.mg-lightbox figcaption {
+  color: var(--mg-text-muted); font-size: 0.85rem;
+  margin-top: 0.75rem; text-align: center; max-width: 60ch;
+}
+
+
 /* ── Utilities ──────────────────────────────────────────────────────────── */
 
 /* Remove left border from any bordered component */

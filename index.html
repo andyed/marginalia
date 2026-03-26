@@ -98,7 +98,7 @@
 
     <header class="demo-header">
       <h1><span>Marginalia</span></h1>
-      <p>Typographic callout library. 8 components, CSS custom properties, zero dependencies.</p>
+      <p>Typographic callout library. 9 components, CSS custom properties, zero dependencies.</p>
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
@@ -409,6 +409,37 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
         <code class="mg-inline-code">mg-fn-ref</code> element.</span></span>
         rather than a number.
       </p>
+    </section>
+
+    <!-- ── 9. Gallery / Lightbox ────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>9. Gallery / Lightbox</h2>
+
+      <p class="demo-prose">
+        Click any image to expand in a lightbox overlay. Arrow keys navigate between
+        images, ESC or click outside to close. Side-by-side comparison grids stack
+        on mobile.
+      </p>
+
+      <h3>Single image</h3>
+
+      <figure class="mg-gallery">
+        <img src="https://picsum.photos/seed/marginalia-a/800/500" alt="Demo landscape">
+        <figcaption>Single expandable image with caption. Click to zoom.</figcaption>
+      </figure>
+
+      <h3>Side-by-side comparison</h3>
+
+      <div class="mg-gallery" data-type="compare">
+        <figure>
+          <img src="https://picsum.photos/seed/marginalia-b/800/500" alt="Mode A comparison">
+          <figcaption><strong style="color: var(--mg-accent);">Mode A.</strong> First comparison image with detailed caption text describing what the viewer should notice.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://picsum.photos/seed/marginalia-c/800/500" alt="Mode B comparison">
+          <figcaption><strong style="color: var(--mg-accent);">Mode B.</strong> Second comparison image — differences from Mode A should be visible at full resolution in the lightbox.</figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- ── Usage ────────────────────────────────────────────────────── -->

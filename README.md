@@ -1,10 +1,10 @@
 # Marginalia
 
-Typographic callout library. 7 components, CSS custom properties, zero dependencies.
+Typographic callout library. 9 components, CSS custom properties, zero dependencies.
 
 Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts.
 
-![Marginalia showcase — all 7 components](images/showcase_03072026.png)
+![Marginalia showcase — all 9 components](images/showcase_03072026.png)
 
 **[Live Demo & Documentation](https://andyed.github.io/marginalia/)**
 
@@ -28,6 +28,8 @@ JS is optional. All components work without it.
 | Collapse | `<details class="mg-collapse">` | Native `<details>`, smooth animation (JS) |
 | Highlight | `<mark class="mg-mark">` | Theme-aware inline highlight |
 | Drop Cap | `<p class="mg-dropcap">` | `::first-letter` large initial, ornate variant |
+| Footnotes | `<span class="mg-fn">` | Auto-numbered popover, tap-to-toggle |
+| Gallery | `<figure class="mg-gallery">` | Click-to-expand lightbox, side-by-side compare |
 
 ## Usage Examples
 
