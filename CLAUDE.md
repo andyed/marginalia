@@ -4,7 +4,7 @@ Design system contract for AI tools extending or modifying Marginalia.
 
 ## Project
 
-Typographic callout library. 9 components, CSS custom properties, zero dependencies. Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/).
+Typographic callout library. 14 components, CSS custom properties, zero dependencies. Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/).
 
 ## Rules
 
@@ -40,7 +40,7 @@ Typographic callout library. 9 components, CSS custom properties, zero dependenc
 - No build step. Ship raw CSS and JS.
 - No dependencies.
 - JS uses `'use strict'` and works in all browsers supporting `<details>` and `navigator.clipboard`.
-- Keep `marginalia.css` under 500 lines and `marginalia.js` under 200 lines.
+- Keep `marginalia.css` under 700 lines and `marginalia.js` under 200 lines.
 
 ### Adding Components
 1. Add CSS in `marginalia.css` under a labeled section comment.

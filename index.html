@@ -98,7 +98,7 @@
 
     <header class="demo-header">
       <h1><span>Marginalia</span></h1>
-      <p>Typographic callout library. 9 components, CSS custom properties, zero dependencies.</p>
+      <p>Typographic callout library. 14 components, CSS custom properties, zero dependencies.</p>
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
@@ -442,6 +442,261 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
       </div>
     </section>
 
+    <!-- ── 10. Inline Skew ───────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>10. Inline Skew Callout</h2>
+
+      <div class="mg-callout mg-skew" data-type="note">
+        <p><strong>Note:</strong> The V1 cortex tiles the visual field with orientation columns spaced at roughly 0.5mm intervals. Each hypercolumn contains a complete set of orientation preferences — a local Fourier basis for spatial frequency analysis.</p>
+      </div>
+
+      <div class="mg-callout mg-skew" data-type="tip">
+        <p><strong>Tip:</strong> Pair skewed callouts with pull quotes for a consistent 3D language across the page. The subtle 4° tilt here complements the stronger 14° on pull quotes.</p>
+      </div>
+    </section>
+
+    <!-- ── 11. Sidebar ─────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>11. Sidebar</h2>
+
+      <div class="demo-flow">
+        <aside class="mg-sidebar">
+          <strong>Implementation</strong>
+          <p>Scrutinizer uses Oklab for all perceptual color operations. sRGB conversions happen only at display output.</p>
+        </aside>
+        <p class="demo-prose">
+          Sidebars float alongside body text, providing tangential context without interrupting
+          the reading flow. They use body-copy sizing — small enough to be subordinate, large
+          enough to be legible. The subtle background and border distinguish them from the main
+          column without the visual weight of a full callout.
+        </p>
+        <p class="demo-prose">
+          Use sidebars for implementation notes, historical context, or definitions that
+          support the main argument but aren't essential to it. They work best when the reader
+          can skip them on a first pass and return on a closer read.
+        </p>
+      </div>
+
+      <h3>Wide variant</h3>
+
+      <div class="demo-flow">
+        <aside class="mg-sidebar mg-wide">
+          <strong>Parasol cells</strong>
+          <p>Large receptive fields, high temporal resolution, achromatic. Dominant in peripheral retina. Feed the magnocellular pathway → V1 layer 4Cα → MT for motion processing.</p>
+        </aside>
+        <p class="demo-prose">
+          The <code class="mg-inline-code">mg-wide</code> modifier increases sidebar width to
+          220px for longer content that needs breathing room. Both variants collapse to
+          full-width blocks on mobile viewports.
+        </p>
+        <p class="demo-prose">
+          Sidebars are the marginalia equivalent of a penciled annotation — they belong to
+          the document but live at a lower priority level than the prose they accompany.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 12. Margin Note ──────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>12. Margin Note</h2>
+
+      <p class="demo-prose" style="margin-bottom: 1rem; color: var(--mg-text-muted); font-size: 0.85rem;">
+        On screens wider than 1200px, margin notes escape the content column and float
+        in the gutter with large peripheral-readable text. On narrower screens they
+        degrade to inline callouts. Resize your browser to see both modes.
+      </p>
+
+      <div class="mg-margin-scope demo-flow">
+        <div class="mg-margin" data-content="insert">
+          The tiles are still square
+          <small>That's the hardware. The retina compensates in the wiring.</small>
+        </div>
+        <p class="demo-prose">
+          The content column needs a parent with <code class="mg-inline-code">mg-margin-scope</code>
+          to allow the note to escape via absolute positioning. On desktop, the note appears
+          in the left gutter at 2.8rem / 800-weight with a 14° perspective tilt pointing
+          inward toward the body text.
+        </p>
+        <p class="demo-prose">
+          The 5px border sits on the inside edge — right border for left-gutter notes,
+          left border for right-gutter notes — creating a visual bridge between the
+          annotation and the text it refers to.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 12b. Margin Note — Right Gutter ────────────────────────── -->
+    <section class="demo-section">
+      <h2>12b. Margin Note — Right Gutter</h2>
+
+      <div class="mg-margin-scope demo-flow">
+        <div class="mg-margin mg-right" data-content="insert">
+          130M → 1.2M
+          <small>The retina's compression ratio. Not a bottleneck — an editorial decision.</small>
+        </div>
+        <p class="demo-prose">
+          Add <code class="mg-inline-code">mg-right</code> to position the note in the right
+          gutter instead. The border flips to the left (inside) edge and the perspective tilt
+          mirrors to point inward. On narrow screens both variants collapse identically to
+          inline callouts.
+        </p>
+        <p class="demo-prose">
+          Left and right gutter notes can alternate down a long article, creating the kind of
+          margin annotation rhythm you see in academic textbooks or magazine feature spreads.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 2b. Pull Quote — Flat + Flipped ─────────────────────────── -->
+    <section class="demo-section">
+      <h2>2b. Pull Quote — Flat + Flipped</h2>
+
+      <div class="demo-flow">
+        <aside class="mg-pull mg-flat mg-flip">
+          The saccade is the fastest movement the human body can make — up to 900°/sec. The visual system is effectively blind during the ballistic phase.
+        </aside>
+        <p class="demo-prose">
+          Combining <code class="mg-inline-code">mg-flat</code> and
+          <code class="mg-inline-code">mg-flip</code> gives a left-floated sidebar without the
+          3D perspective tilt. This is the quietest pull quote variant — no skew drawing the
+          eye, just a bordered float sitting in the left margin.
+        </p>
+        <p class="demo-prose">
+          The four pull quote configurations form a 2×2 matrix: skewed/flat × right/left.
+          Each serves a different editorial role, from the dramatic tilted hero quote to the
+          understated left-margin gloss.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 13. Content Mode ─────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>13. Content Mode</h2>
+
+      <div class="demo-flow">
+        <aside class="mg-pull" data-content="repeat">
+          Progressive spatial pooling solves the same problem whether evolution or engineering builds it.
+        </aside>
+        <p class="demo-prose">
+          <strong>Repeat mode</strong> (<code class="mg-inline-code">data-content="repeat"</code>)
+          signals that the callout duplicates text from the surrounding body — the traditional
+          pull quote. It renders in italics at slightly reduced opacity, telling the reader
+          "you've seen this already; this is emphasis, not new information."
+        </p>
+        <p class="demo-prose">
+          Progressive spatial pooling solves the same problem whether evolution or engineering
+          builds it. Hardware MIP chains and retinal eccentricity gradients converge on the
+          same Laplacian pyramid structure because the optimization landscape has one global
+          minimum.
+        </p>
+      </div>
+
+      <div class="demo-flow" style="margin-top: 2rem;">
+        <aside class="mg-pull mg-flat" data-content="insert">
+          Crowding, not blur, is the primary limit on peripheral recognition. Flankers merge into texture.
+        </aside>
+        <p class="demo-prose">
+          <strong>Insert mode</strong> (<code class="mg-inline-code">data-content="insert"</code>)
+          signals new standalone content — a tangential observation, an aside, a definition.
+          Normal weight, full opacity. The reader knows this is additive information worth
+          reading even if they've read every word of the body text.
+        </p>
+        <p class="demo-prose">
+          The content mode attribute works on any callout variant: pull quotes, margin notes,
+          sidebars, and inline callouts. It's a semantic flag, not a layout modifier.
+        </p>
+      </div>
+
+      <h3>On a callout</h3>
+
+      <div class="mg-callout" data-type="note" data-content="insert">
+        <p><strong>Aside:</strong> The magnocellular pathway carries achromatic, high-temporal-frequency signals from parasol ganglion cells. It's faster than the parvocellular pathway by ~20ms — enough to prime spatial attention before fine detail arrives.</p>
+      </div>
+
+      <h3>On a sidebar</h3>
+
+      <div class="demo-flow">
+        <aside class="mg-sidebar" data-content="insert">
+          <strong>Terminology</strong>
+          <p><strong style="color: var(--mg-accent-ink);">Crowding</strong> — inability to recognize objects in clutter, despite adequate acuity. Distinct from blur.</p>
+        </aside>
+        <p class="demo-prose">
+          Content mode on a sidebar signals whether the tangential note paraphrases nearby
+          body text or introduces a new definition. Insert mode keeps normal weight; repeat
+          mode would italicize the sidebar body.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── 14. Spread ─────────────────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>14. Spread — Two-Column Magazine Layout</h2>
+
+      <p class="demo-prose" style="margin-bottom: 1rem; color: var(--mg-text-muted); font-size: 0.85rem;">
+        Two-column body text with callouts that bridge both columns. The classic
+        editorial spread — inspired by CSS Regions (Adobe's abandoned spec) but
+        built on <code class="mg-inline-code">column-count</code> +
+        <code class="mg-inline-code">column-span: all</code>, which actually ships
+        in every browser.
+      </p>
+
+      <div class="mg-spread">
+        <p class="mg-dropcap demo-prose">
+          The retina performs more computation than any other structure in the central
+          nervous system relative to its size. Six layers of neurons — photoreceptors,
+          horizontal cells, bipolar cells, amacrine cells, ganglion cells, and their
+          associated interneurons — implement a signal processing pipeline that would
+          require roughly 10 billion operations per second to simulate digitally.
+        </p>
+
+        <p class="demo-prose">
+          Center-surround receptive fields emerge at the ganglion cell layer through
+          lateral inhibition mediated by horizontal and amacrine cells. This
+          architecture performs simultaneous contrast normalization across the entire
+          visual field, adapting the neural code to local luminance statistics on a
+          millisecond timescale. The result is a representation that encodes edges,
+          gradients, and transients rather than absolute intensity — exactly the
+          features that matter for object recognition downstream.
+        </p>
+
+        <aside class="mg-pull" data-content="insert">
+          Six layers of neurons implement a signal processing pipeline that would
+          require 10 billion operations per second to simulate.
+        </aside>
+
+        <p class="demo-prose">
+          Midget ganglion cells in the central retina maintain a one-to-one connection
+          with individual cone photoreceptors, preserving the full spatial resolution
+          of the cone mosaic. This private-line architecture is unique to primates and
+          explains why human visual acuity exceeds that of all other mammals despite
+          having a similar optical system. The tradeoff: midget cells consume roughly
+          80% of ganglion cell bandwidth for the central 5 degrees alone.
+        </p>
+
+        <div class="mg-callout" data-type="note">
+          <p><strong>Note:</strong> The midget pathway's 80% bandwidth allocation for 5° of visual
+          field is the biological precedent for foveated rendering's aggressive LOD falloff.
+          If the retina can justify that resource distribution, so can your shader.</p>
+        </div>
+
+        <p class="demo-prose">
+          Parasol cells cover the remaining visual field with larger receptive fields
+          optimized for temporal contrast and motion detection. Their faster conduction
+          velocity and transient response profiles feed the magnocellular pathway,
+          which drives saccade targeting and the perception of optic flow. This is the
+          system that makes you flinch before you consciously see the baseball.
+        </p>
+
+        <p class="demo-prose">
+          The division of labor between midget and parasol pathways is not a compromise
+          — it's a Pareto-optimal allocation of neural bandwidth given the statistics
+          of natural scenes. High spatial frequency information is concentrated at
+          fixation. Motion energy dominates the periphery. The retina matches its
+          channel capacity to the signal structure at each eccentricity.
+        </p>
+      </div>
+    </section>
+
     <!-- ── Usage ────────────────────────────────────────────────────── -->
     <section class="demo-section" style="border-top: 1px solid var(--mg-border); padding-top: 3rem;">
       <h2>Usage</h2>
@@ -483,6 +738,36 @@ Text&lt;span class="mg-fn"&gt;
   &lt;a class="mg-fn-ref" tabindex="0"&gt;&lt;/a&gt;
   &lt;span class="mg-fn-body"&gt;Footnote content shown on hover/focus.&lt;/span&gt;
 &lt;/span&gt; continues.
+
+&lt;!-- Inline skew callout --&gt;
+&lt;div class="mg-callout mg-skew" data-type="note"&gt;Tilted block callout.&lt;/div&gt;
+
+&lt;!-- Sidebar — float-right body-copy tangential note --&gt;
+&lt;aside class="mg-sidebar"&gt;
+  &lt;strong&gt;Title&lt;/strong&gt;
+  &lt;p&gt;Tangential context at body-copy size.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="mg-sidebar mg-wide"&gt;Wider variant.&lt;/aside&gt;
+
+&lt;!-- Margin note — escapes into the gutter on wide screens --&gt;
+&lt;div class="mg-margin-scope"&gt;
+  &lt;div class="mg-margin"&gt;
+    Big gutter text
+    &lt;small&gt;Explanatory subtext.&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;p&gt;Body text continues normally.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Content mode: repeat (duplicated body text) vs insert (new content) --&gt;
+&lt;aside class="mg-pull" data-content="repeat"&gt;Emphasized body text.&lt;/aside&gt;
+&lt;aside class="mg-pull" data-content="insert"&gt;New standalone aside.&lt;/aside&gt;
+
+&lt;!-- Two-column magazine spread --&gt;
+&lt;div class="mg-spread"&gt;
+  &lt;p&gt;Body text flows into two columns.&lt;/p&gt;
+  &lt;aside class="mg-pull"&gt;Bridges both columns.&lt;/aside&gt;
+  &lt;p&gt;Text resumes in two columns.&lt;/p&gt;
+&lt;/div&gt;
 
 &lt;!-- Remove vertical bar from any component --&gt;
 &lt;div class="mg-callout" data-type="note" data-bar="none"&gt;No left border.&lt;/div&gt;</pre>

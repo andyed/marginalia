@@ -1,10 +1,10 @@
 # Marginalia
 
-Typographic callout library. 9 components, CSS custom properties, zero dependencies.
+Typographic callout library. 14 components, CSS custom properties, zero dependencies.
 
-Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts.
+Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts. Inspired by the editorial layouts of Rolling Stone and early Wired.
 
-![Marginalia showcase — all 9 components](images/showcase_03072026.png)
+![Marginalia showcase](images/showcase_03072026.png)
 
 **[Live Demo & Documentation](https://andyed.github.io/marginalia/)**
 
@@ -30,6 +30,11 @@ JS is optional. All components work without it.
 | Drop Cap | `<p class="mg-dropcap">` | `::first-letter` large initial, ornate variant |
 | Footnotes | `<span class="mg-fn">` | Auto-numbered popover, tap-to-toggle |
 | Gallery | `<figure class="mg-gallery">` | Click-to-expand lightbox, side-by-side compare |
+| Inline Skew | `<div class="mg-callout mg-skew">` | Perspective-tilted block callout |
+| Sidebar | `<aside class="mg-sidebar">` | Float-right body-copy tangential note |
+| Margin Note | `<div class="mg-margin">` | Escapes into gutter on wide screens, inline on mobile |
+| Content Mode | `data-content="repeat\|insert"` | Signals duplicated body text vs new standalone content |
+| Spread | `<div class="mg-spread">` | Two-column magazine layout, callouts bridge columns |
 
 ## Usage Examples
 
