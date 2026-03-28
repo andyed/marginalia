@@ -17,6 +17,32 @@ Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/
 
 JS is optional. All components work without it.
 
+### Vite / npm
+
+```bash
+npm install marginalia
+```
+
+```js
+import 'marginalia/marginalia.css';
+import { convert } from 'marginalia/md';
+
+document.querySelector('#content').innerHTML = convert(markdownString);
+```
+
+## Markdown Converter
+
+`marginalia-md.js` converts a markdown subset into Marginalia-classed HTML. Write standard markdown — GitHub-style alerts, fenced code blocks, `==highlights==`, `{badges}` — and get styled components out.
+
+```html
+<script src="marginalia-md.js" defer></script>
+<script>
+  document.querySelector('#content').innerHTML = Marginalia.md(markdownString);
+</script>
+```
+
+See [`llm.md`](llm.md) for the full pattern reference, designed to drop into an LLM system prompt.
+
 ## Components
 
 | Component | Element | Key feature |
