@@ -1,6 +1,6 @@
 # Marginalia
 
-Typographic callout library. 14 components, CSS custom properties, zero dependencies.
+Typographic callout library. 15 components, CSS custom properties, zero dependencies.
 
 Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts. Inspired by the editorial layouts of Rolling Stone and early Wired.
 
@@ -54,6 +54,7 @@ See [`llm.md`](llm.md) for the full pattern reference, designed to drop into an 
 | Collapse | `<details class="mg-collapse">` | Native `<details>`, smooth animation (JS) |
 | Highlight | `<mark class="mg-mark">` | Theme-aware inline highlight |
 | Drop Cap | `<p class="mg-dropcap">` | `::first-letter` large initial, ornate variant |
+| Lead-in | `<span class="mg-lede">` | Rubricated opening words, small-caps variant |
 | Footnotes | `<span class="mg-fn">` | Auto-numbered popover, tap-to-toggle |
 | Gallery | `<figure class="mg-gallery">` | Click-to-expand lightbox, side-by-side compare |
 | Inline Skew | `<div class="mg-callout mg-skew">` | Perspective-tilted block callout |

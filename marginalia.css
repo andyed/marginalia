@@ -329,6 +329,20 @@
   padding-left: 0.12em;
 }
 
+/* Lead-in — colored opening words of a section */
+.mg-lede {
+  font-weight: 700;
+  color: var(--mg-accent-ink);
+  letter-spacing: 0.02em;
+}
+
+/* Small-caps variant */
+.mg-lede[data-type="caps"] {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-size: 1.05em;
+}
+
 /* Responsive: reduce size on small viewports */
 @media (max-width: 720px) {
   .mg-dropcap::first-letter {

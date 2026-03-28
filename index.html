@@ -98,7 +98,7 @@
 
     <header class="demo-header">
       <h1><span>Marginalia</span></h1>
-      <p>Typographic callout library. 14 components, CSS custom properties, zero dependencies.</p>
+      <p>Typographic callout library. 15 components, CSS custom properties, zero dependencies.</p>
       <p><a href="https://github.com/andyed/marginalia" style="color: var(--mg-text-muted); text-decoration: none; font-size: 0.82rem;">GitHub</a></p>
     </header>
 
@@ -371,6 +371,36 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
         leaf and lapis lazuli. Modern typography inherited the convention stripped of
         its gilding but not its function: signal the start, reward the eye, set the
         pace for what follows.
+      </p>
+    </section>
+
+    <!-- ── 7b. Lead-in (Rubrication) ─────────────────────────────────── -->
+    <section class="demo-section">
+      <h2>7b. Lead-in (Rubrication)</h2>
+
+      <p class="demo-prose">
+        <span class="mg-lede">The ganglion cell layer</span> is where the retina's
+        editorial decisions become irreversible. Signals that survive center-surround
+        filtering are bundled into 1.2 million axons — the optic nerve — and there is
+        no going back to the raw photoreceptor mosaic after this point.
+      </p>
+
+      <h3>Small-caps variant</h3>
+
+      <p class="demo-prose">
+        <span class="mg-lede" data-type="caps">Cortical magnification</span> describes
+        how many millimeters of cortical surface represent one degree of visual angle.
+        The function falls off hyperbolically from the fovea, with roughly half of V1
+        devoted to the central 2–3 degrees.
+      </p>
+
+      <h3>Paired with drop cap</h3>
+
+      <p class="mg-dropcap demo-prose">
+        <span class="mg-lede">Rubrication</span> dates to medieval manuscripts where
+        scribes wrote opening words in red ink — Latin <em>ruber</em>. The convention
+        survived into modern editorial design as the colored lead-in, signaling the
+        start of a new section without the weight of a full subheading.
       </p>
     </section>
 
@@ -732,6 +762,10 @@ function corticalMagnification(eccentricity, e2 = 0.75) {
 &lt;!-- Drop cap --&gt;
 &lt;p class="mg-dropcap"&gt;Your opening paragraph.&lt;/p&gt;
 &lt;p class="mg-dropcap" data-type="ornate"&gt;Ornate variant with border accent.&lt;/p&gt;
+
+&lt;!-- Lead-in (rubrication) --&gt;
+&lt;p&gt;&lt;span class="mg-lede"&gt;Opening words&lt;/span&gt; rest of text.&lt;/p&gt;
+&lt;p&gt;&lt;span class="mg-lede" data-type="caps"&gt;Small caps&lt;/span&gt; variant.&lt;/p&gt;
 
 &lt;!-- Footnote (auto-numbered) --&gt;
 Text&lt;span class="mg-fn"&gt;
