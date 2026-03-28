@@ -4,16 +4,26 @@
   "description": "Typographic callout library — pull quotes, callouts, code blocks, badges, collapsible sections, drop caps",
   "style": "marginalia.css",
   "main": "marginalia.js",
+  "exports": {
+    ".": "./marginalia.js",
+    "./md": "./marginalia-md.js",
+    "./marginalia.css": "./marginalia.css",
+    "./marginalia-md": "./marginalia-md.js"
+  },
   "files": [
     "marginalia.css",
-    "marginalia.js"
+    "marginalia.js",
+    "marginalia-md.js",
+    "llm.md"
   ],
   "keywords": [
     "typography",
     "callouts",
     "pull-quotes",
     "css",
-    "design-system"
+    "design-system",
+    "llm",
+    "markdown"
   ],
   "author": "Andy Edmonds",
   "license": "MIT",
@@ -21,5 +31,8 @@
     "type": "git",
     "url": "https://github.com/andyed/marginalia.git"
   },
-  "homepage": "https://andyed.github.io/marginalia/"
+  "homepage": "https://andyed.github.io/marginalia/",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
 }

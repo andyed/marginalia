@@ -52,6 +52,8 @@ Typographic callout library. 14 components, CSS custom properties, zero dependen
 ```
 marginalia.css      Core styles + custom properties
 marginalia.js       Optional: collapse animation, code copy, gallery lightbox
+marginalia-md.js    Optional: markdown subset → Marginalia HTML converter
+llm.md              LLM system prompt cheat sheet (markdown patterns reference)
 index.html           Live demo (GitHub Pages)
 screenshots/        README visuals
 ```
