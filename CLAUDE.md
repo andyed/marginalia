@@ -35,6 +35,7 @@ Typographic callout library. 15 components, CSS custom properties, zero dependen
 - Rounded right corners (`border-radius: 0 var(--mg-radius) var(--mg-radius) 0`) on bordered elements.
 - Font stack inherits from host page. Library only sets `font-family` on monospace elements via `--mg-font-mono`.
 - The 3D perspective pull quote is the signature component. Preserve: `perspective(600px) rotateY(14deg) scale(0.92)` and `shape-outside` polygon.
+- **Perspective text alignment rule:** text aligns toward the border accent. If the element has `border-left`, use `text-align: left`; if `border-right`, use `text-align: right`. The border is the visual anchor. Applies to pull quotes, margin notes, and any future perspective components.
 
 ### Code Quality
 - No build step. Ship raw CSS and JS.

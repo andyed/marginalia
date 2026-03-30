@@ -1,5 +1,8 @@
 {
-  "name": "marginalia",
+  "name": "@andyed/marginalia",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "0.1.0",
   "description": "Typographic callout library — pull quotes, callouts, code blocks, badges, collapsible sections, drop caps",
   "style": "marginalia.css",

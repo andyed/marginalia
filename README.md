@@ -48,7 +48,7 @@ See [`llm.md`](llm.md) for the full pattern reference, designed to drop into an 
 | Component | Element | Key feature |
 |-----------|---------|-------------|
 | Callout | `<div class="mg-callout" data-type="note">` | 4 semantic variants, left-border indicator |
-| Pull quote | `<aside class="mg-pull">` | 3D perspective tilt, `shape-outside` text wrapping |
+| Pull quote | `<aside class="mg-pull">` | 3D perspective tilt, text aligns to border, `shape-outside` wrapping |
 | Code block | `<pre class="mg-code" data-lang="js">` | Language label, copy button (JS) |
 | Badge | `<span class="mg-badge">` | Small caps, inline label |
 | Collapse | `<details class="mg-collapse">` | Native `<details>`, smooth animation (JS) |

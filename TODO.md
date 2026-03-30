@@ -10,6 +10,7 @@
   - **margin note** — `mg-margin` in `mg-margin-scope` (gutter on ≥1200px, inline fallback)
   - **content mode** — `data-content="repeat|insert"` on any callout
 - [x] **Two-column spread** — `mg-spread` uses `column-count: 2` + `column-span: all` for magazine-style layout (component 14)
+- [ ] **Pillow renderer** — Python module (`marginalia_render.py`) that takes marginalia markdown and outputs static images via Pillow. Same `llm.md` patterns, rendered as raster graphics for social cards, OG images, email newsletters, anywhere CSS can't reach. Key challenges: perspective transform for pull quote skew, text wrapping/flow for two-column spreads, accent color palette from CSS tokens. Could share the typographer's font stack and contrast verification. Entry point: `render(md_string, width=1200, height=630) → PIL.Image`
 - [ ] **Image annotation overlays** — SVG overlays on `<figure>` images for arrows, labels, region markers. The v2.6 blog hand-rolls `position:absolute` SVGs for eccentricity arrows and fovea markers. Should be a `mg-annotated-image` component with declarative annotation data.
 
 ## Logo & Branding

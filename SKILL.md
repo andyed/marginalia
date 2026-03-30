@@ -104,7 +104,7 @@ Opening paragraph gets a large decorative initial letter.
 ## Tips
 
 - Dark theme by default. Add `data-mg-theme="light"` to `<html>` for light mode.
-- Plain `>` blockquotes become 3D perspective pull quotes — the signature component.
+- Plain `>` blockquotes become 3D perspective pull quotes — the signature component. Text auto-aligns toward the border accent.
 - All components work without JavaScript. JS adds copy buttons, smooth collapse, and lightbox.
 - Add `data-bar="none"` to any element to remove the left border accent.
 - Use `data-content="repeat"` when quoting source text, `data-content="insert"` for original commentary.

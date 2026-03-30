@@ -174,6 +174,18 @@
     }
   }
 
+  /* ── Center callout auto-height ───────────────────────────────────────── */
+
+  function initCenterWraps() {
+    document.querySelectorAll('.mg-center-wrap').forEach(function (wrap) {
+      var callout = wrap.querySelector('.mg-callout, .mg-pull');
+      if (!callout) return;
+      // Measure rendered callout height and sync float heights
+      var h = callout.offsetHeight;
+      wrap.style.setProperty('--mg-center-h', h + 'px');
+    });
+  }
+
   /* ── Init ─────────────────────────────────────────────────────────────── */
 
   function init() {
@@ -181,6 +193,7 @@
     initCollapseAnimation();
     initFootnotes();
     initGallery();
+    initCenterWraps();
   }
 
   if (document.readyState === 'loading') {
