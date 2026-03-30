@@ -1,0 +1,1 @@
+clone this repo and get it working?  https://github.com/alexanderrich/stroop-jspsych
