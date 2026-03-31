@@ -1,6 +1,6 @@
-# Marginalia
+![Marginalia](assets/wordmark-800x200.png)
 
-Typographic callout library. 15 components, CSS custom properties, zero dependencies.
+15 components, CSS custom properties, zero dependencies.
 
 Extracted from [Inside the Math](https://andyed.github.io/psychodeli-webgl-port/inside_the_math/) and [Scrutinizer](https://andyed.github.io/scrutinizer-www/) blog posts. Inspired by the editorial layouts of Rolling Stone and early Wired.
 
