@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="" data-mg-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="pandoc + marginalia">
+  <meta name="author" content="Test Fixture">
+  <meta name="dcterms.date" content="2026-04-12">
+  <title>Marginalia + Pandoc Round-trip Test</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/marginalia@latest/marginalia.css">
+</head>
+<body>
+<header>
+  <h1>Marginalia + Pandoc Round-trip Test</h1>
+  <p class="author">Test Fixture</p>
+  <time>2026-04-12</time>
+</header>
+<main>
+<h1 id="marginalia-pandoc">Marginalia + Pandoc</h1>
+<p>End-to-end test for the marginalia Lua filter and HTML template.</p>
+<div class="mg-dropcap">
+<p>Opening paragraph should get a large decorative initial letter. The
+remainder of the paragraph flows normally with <strong>bold</strong> and
+<em>italic</em> preserved, and <code
+class="mg-inline-code">inline code</code> styled as <code
+class="mg-inline-code">mg-inline-code</code>.</p>
+</div>
+<h2 id="callouts-github-style-alerts">Callouts (GitHub-style
+alerts)</h2>
+<div class="mg-callout" data-type="note">
+<p><strong>Note:</strong> This becomes an <code
+class="mg-inline-code">mg-callout</code> with <code
+class="mg-inline-code">data-type="note"</code> and a bold “Note:”
+prefix.</p>
+</div>
+<div class="mg-callout" data-type="tip">
+<p><strong>Tip:</strong> Tips get the green accent via marginalia’s
+data-type styling.</p>
+</div>
+<div class="mg-callout" data-type="warning">
+<p><strong>Warning:</strong> Warnings get the amber accent.</p>
+</div>
+<div class="mg-callout" data-type="important">
+<p><strong>Important:</strong> Important gets the red accent.</p>
+</div>
+<h2 id="extended-alerts">Extended alerts</h2>
+<div class="mg-sidebar">
+<p>This sidebar floats beside the body on wide screens.</p>
+</div>
+<div class="mg-margin">
+<p>A margin note — escapes to the gutter on wide viewports, inline on
+mobile.</p>
+</div>
+<div class="mg-pull">
+<blockquote>
+<p>Explicit pull quote wrapped in <code
+class="mg-inline-code">mg-pull</code> around a blockquote.</p>
+</blockquote>
+</div>
+<h2 id="plain-blockquote">Plain blockquote</h2>
+<div class="mg-pull">
+<blockquote>
+<p>A plain blockquote with no marker becomes a 3D perspective pull quote
+— the signature marginalia component. Text auto-aligns toward the border
+accent.</p>
+</blockquote>
+</div>
+<h2 id="inline-elements">Inline elements</h2>
+<p>Inline <span class="mg-mark">highlighted text</span> becomes a <code
+class="mg-inline-code">mg-mark</code> span. A <span
+class="mg-badge">Badge</span> and a <span class="mg-badge"
+data-type="important">Important Thing</span> appear inline with <code
+class="mg-inline-code">mg-badge</code> styling. Mix with <em>italic</em>
+and <strong>bold</strong> and <code class="mg-inline-code">code</code>
+in one sentence.</p>
+<h2 id="code-block">Code block</h2>
+<pre class="mg-code" data-lang="python"><code>def hello():
+    return "world"</code></pre>
+<h2 id="footnotes">Footnotes</h2>
+<p>A sentence with a footnote reference<span
+class="mg-fn"><a class="mg-fn-ref" tabindex="0"></a><span
+class="mg-fn-body">The footnote content can contain
+<strong>bold</strong>, <em>italic</em>, and <code
+class="mg-inline-code">code</code> — all preserved by the
+filter.</span></span> should render as an <code
+class="mg-inline-code">mg-fn</code> popover.</p>
+<h2 id="closing">Closing</h2>
+<p>The same source renders to HTML, PDF (via weasyprint or LaTeX), DOCX,
+or EPUB without losing marginalia’s typographic affordances.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/marginalia@latest/marginalia.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/marginalia@latest/marginalia-md.js" defer></script>
+</body>
+</html>
