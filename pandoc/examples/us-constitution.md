@@ -35,6 +35,10 @@ for the United States of America.
 > held it is not itself a source of federal authority (*Jacobson v.
 > Massachusetts*, 197 U.S. 11, 1905).
 
+::: {.mg-margin data-content="repeat"}
+We the People
+:::
+
 ==We the People== is the rhetorical hinge: sovereignty is declared to rest
 in the People, not the States. That framing would be litigated, fought
 over, and tested repeatedly in the two and a half centuries that followed.
@@ -54,6 +58,10 @@ over, and tested repeatedly in the two and a half centuries that followed.
 ::: const
 All legislative Powers herein granted shall be vested in a Congress of the
 United States, which shall consist of a Senate and House of Representatives.
+:::
+
+::: {.mg-margin data-content="repeat"}
+herein granted
 :::
 
 The phrase ==herein granted== is load-bearing. Congress holds only enumerated
@@ -162,6 +170,10 @@ or of the press; or the right of the people peaceably to assemble, and to
 petition the Government for a redress of grievances.
 :::
 
+::: {.mg-margin data-content="repeat"}
+Congress shall make no law
+:::
+
 > [!QUOTE]
 > Congress shall make no law...
 
@@ -210,6 +222,10 @@ nor shall be compelled in any criminal case to be a witness against
 himself, nor be deprived of life, liberty, or property, without due
 process of law; nor shall private property be taken for public use,
 without just compensation.
+:::
+
+::: {.mg-margin data-content="repeat"}
+due process of law
 :::
 
 The Fifth Amendment bundles five distinct protections: ==grand jury
@@ -273,6 +289,10 @@ The eighteenth article of amendment to the Constitution of the United
 States is hereby repealed.
 :::
 
+::: {.mg-margin data-content="repeat"}
+hereby repealed
+:::
+
 > [!IMPORTANT]
 > Sixteen words that undid fourteen years of Prohibition. The Twenty-first
 > is the only amendment to explicitly repeal another, and the only one
@@ -285,6 +305,17 @@ States is hereby repealed.
 > contemporary legislation can pass through a single Congress.
 > Constitutional change is slow in theory and, occasionally, astonishingly
 > fast in practice.
+
+---
+
+::: signature
+done in Convention by the Unanimous Consent of the States present the
+Seventeenth Day of September in the Year of our Lord one thousand seven
+hundred and Eighty seven and of the Independance of the United States
+of America the Twelfth
+
+*— closing paragraph of the Constitution, spelling preserved*
+:::
 
 ---
 
@@ -302,6 +333,7 @@ pandoc us-constitution.md \
   --from markdown+mark+alerts \
   --lua-filter ../marginalia.lua \
   --template template-local.html \
+  --section-divs \
   --standalone \
   -o us-constitution.html
 ```

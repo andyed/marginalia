@@ -14,6 +14,11 @@ $if(description-meta)$
   <meta name="description" content="$description-meta$">
 $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <!-- Mrs Saint Delafield + Allura: copperplate script revivals closest to
+       Jacob Shallus's engrossing hand on the 1787 original. Display-only. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Allura&display=swap">
   <link rel="stylesheet" href="../../marginalia.css">
   <style>
     /* Page-level layout for the reader's edition. Marginalia styles callouts
@@ -30,29 +35,100 @@ $endif$
     }
     main { display: block; }
 
-    /* Override the desktop gutter-float treatment for .mg-margin on this page.
-       The default 1200px+ rule uses position:absolute with left:-410px, which
-       requires a much wider content column + gutter than our 44rem reader
-       layout can provide — without the override, all margin notes stack on
-       top of each other at the top-left of main. Keep the inline styling
-       from the base rule at every viewport width. */
+    /* ───── Narrow-screen fallback (below 1200px) ─────────────────────────
+       Margin notes stay inline with a bordered accent treatment matching
+       the other callouts. Overrides the default absolute positioning that
+       would otherwise kick in on large screens without an explicit layout. */
+    .mg-margin {
+      padding: 1rem 1.25rem;
+      border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+      border-right: none;
+      border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      background: rgba(var(--mg-accent-rgb), 0.04);
+      text-align: left;
+      transform: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: var(--mg-text-muted);
+    }
+    .mg-margin p { margin: 0; }
+    .mg-margin p + p { margin-top: 0.35rem; }
+
+    /* ───── Large-screen gutter layout (1200px+) ──────────────────────────
+       CSS Grid with three columns: left gutter | 44rem reader | right
+       gutter. Everything defaults to the center column. Margin notes
+       escape to the left column with `grid-auto-flow: dense` so they
+       pack into whichever grid row their source position aligns with. */
     @media (min-width: 1200px) {
-      .mg-margin {
-        position: static;
-        width: auto;
-        left: auto;
-        top: auto;
-        padding: 1rem 1.25rem;
-        border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
-        border-right: none;
-        border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      body {
+        max-width: 90rem;
+        padding: 3rem 2rem 6rem;
+      }
+      main {
+        display: grid;
+        grid-template-columns:
+          minmax(240px, 320px)
+          minmax(auto, 44rem)
+          minmax(240px, 320px);
+        grid-auto-flow: dense;
+        column-gap: 2.25rem;
+        row-gap: 0;
+        max-width: none;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: start;
+      }
+      main > * { grid-column: 2; }
+
+      /* Pandoc --section-divs emits nested <section> wrappers per heading.
+         Each becomes a subgrid inheriting main's column tracks, with its
+         own dense-packed row tracks. Margin notes inside a section escape
+         to col 1 while their row position stays scoped to that section —
+         so they align with the body content of their own subsection, not
+         with an arbitrary global row. */
+      main section {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-auto-flow: dense;
+        grid-column: 1 / -1;
+        row-gap: 0;
+      }
+      main section > * { grid-column: 2; }
+
+      main .mg-margin {
+        grid-column: 1;
+        align-self: start;
+        margin: 0;
+        padding: 0.9rem 1.1rem 0.9rem 0.9rem;
+        border-right: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+        border-left: none;
+        border-radius: var(--mg-radius) 0 0 var(--mg-radius);
+        text-align: right;
         background: rgba(var(--mg-accent-rgb), 0.04);
-        text-align: left;
-        transform: none;
-        font-size: 1.125rem;
-        font-weight: 600;
-        line-height: 1.45;
-        letter-spacing: normal;
+        font-size: 0.95rem;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.5;
+        color: var(--mg-text-muted);
+      }
+      /* Repeat mode — display-weight serif echo of a body phrase, not a
+         new annotation. Tufte-style repetition in the gutter. */
+      main .mg-margin[data-content="repeat"] {
+        font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+        font-size: 1.65rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--mg-accent-ink);
+        background: transparent;
+        border-right-color: var(--mg-accent);
+        padding: 0.4rem 0.9rem 0.4rem 0;
+      }
+      main .mg-margin[data-content="repeat"] .mg-mark {
+        background: transparent;
         color: var(--mg-accent);
       }
     }
@@ -76,14 +152,22 @@ $endif$
       font-size: 1.125rem;
       margin: 0.25rem 0;
     }
-    header .author,
-    header time {
+    header .author {
       display: block;
       font-size: 0.875rem;
       color: var(--mg-text-muted);
       margin-top: 0.25rem;
       font-variant: small-caps;
       letter-spacing: 0.06em;
+    }
+    /* Ratification date: cursive signature, nods to the engrossed original. */
+    header time {
+      display: block;
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 1.65rem;
+      color: var(--mg-accent-ink);
+      margin-top: 0.8rem;
+      letter-spacing: 0.01em;
     }
     h1, h2, h3 {
       font-family: 'Didot', 'Bodoni 72', Georgia, serif;
@@ -135,6 +219,46 @@ $endif$
     .const p { margin: 0.6rem 0; }
     .const p:first-child { margin-top: 0; }
     .const p:last-child { margin-bottom: 0; }
+
+    /* Override the default mg-dropcap first-letter with a cursive display
+       initial in copperplate revival. Matches the engrossing hand of the
+       1787 original without setting body text in cursive (unreadable). */
+    .mg-dropcap::first-letter {
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 6.5em;
+      font-weight: 400;
+      line-height: 0.78;
+      padding-right: 0.12em;
+      padding-left: 0.05em;
+      margin-top: 0.1em;
+      color: var(--mg-accent-ink);
+    }
+
+    /* Closing signature block — the Constitution's actual closing paragraph
+       rendered in cursive at display weight, centered, with generous air. */
+    .signature {
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 1.8rem;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--mg-accent-ink);
+      margin: 4rem auto 3rem;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--mg-border);
+      border-bottom: 1px solid var(--mg-border);
+      max-width: 34rem;
+    }
+    .signature p { margin: 0.6rem 0; }
+    .signature em {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-variant: small-caps;
+      letter-spacing: 0.08em;
+      color: var(--mg-text-muted);
+      margin-top: 1.25rem;
+    }
 $for(css)$
     @import url("$css$");
 $endfor$

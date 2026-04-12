@@ -6,6 +6,11 @@
   <meta name="generator" content="pandoc + marginalia">
   <meta name="author" content="Marginalia Pandoc Demo">
   <title>The United States Constitution</title>
+  <!-- Mrs Saint Delafield + Allura: copperplate script revivals closest to
+       Jacob Shallus's engrossing hand on the 1787 original. Display-only. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Allura&display=swap">
   <link rel="stylesheet" href="../../marginalia.css">
   <style>
     /* Page-level layout for the reader's edition. Marginalia styles callouts
@@ -22,29 +27,100 @@
     }
     main { display: block; }
 
-    /* Override the desktop gutter-float treatment for .mg-margin on this page.
-       The default 1200px+ rule uses position:absolute with left:-410px, which
-       requires a much wider content column + gutter than our 44rem reader
-       layout can provide — without the override, all margin notes stack on
-       top of each other at the top-left of main. Keep the inline styling
-       from the base rule at every viewport width. */
+    /* ───── Narrow-screen fallback (below 1200px) ─────────────────────────
+       Margin notes stay inline with a bordered accent treatment matching
+       the other callouts. Overrides the default absolute positioning that
+       would otherwise kick in on large screens without an explicit layout. */
+    .mg-margin {
+      padding: 1rem 1.25rem;
+      border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+      border-right: none;
+      border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      background: rgba(var(--mg-accent-rgb), 0.04);
+      text-align: left;
+      transform: none;
+      font-size: 1.05rem;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: var(--mg-text-muted);
+    }
+    .mg-margin p { margin: 0; }
+    .mg-margin p + p { margin-top: 0.35rem; }
+
+    /* ───── Large-screen gutter layout (1200px+) ──────────────────────────
+       CSS Grid with three columns: left gutter | 44rem reader | right
+       gutter. Everything defaults to the center column. Margin notes
+       escape to the left column with `grid-auto-flow: dense` so they
+       pack into whichever grid row their source position aligns with. */
     @media (min-width: 1200px) {
-      .mg-margin {
-        position: static;
-        width: auto;
-        left: auto;
-        top: auto;
-        padding: 1rem 1.25rem;
-        border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
-        border-right: none;
-        border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      body {
+        max-width: 90rem;
+        padding: 3rem 2rem 6rem;
+      }
+      main {
+        display: grid;
+        grid-template-columns:
+          minmax(240px, 320px)
+          minmax(auto, 44rem)
+          minmax(240px, 320px);
+        grid-auto-flow: dense;
+        column-gap: 2.25rem;
+        row-gap: 0;
+        max-width: none;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: start;
+      }
+      main > * { grid-column: 2; }
+
+      /* Pandoc --section-divs emits nested <section> wrappers per heading.
+         Each becomes a subgrid inheriting main's column tracks, with its
+         own dense-packed row tracks. Margin notes inside a section escape
+         to col 1 while their row position stays scoped to that section —
+         so they align with the body content of their own subsection, not
+         with an arbitrary global row. */
+      main section {
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-auto-flow: dense;
+        grid-column: 1 / -1;
+        row-gap: 0;
+      }
+      main section > * { grid-column: 2; }
+
+      main .mg-margin {
+        grid-column: 1;
+        align-self: start;
+        margin: 0;
+        padding: 0.9rem 1.1rem 0.9rem 0.9rem;
+        border-right: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+        border-left: none;
+        border-radius: var(--mg-radius) 0 0 var(--mg-radius);
+        text-align: right;
         background: rgba(var(--mg-accent-rgb), 0.04);
-        text-align: left;
-        transform: none;
-        font-size: 1.125rem;
-        font-weight: 600;
-        line-height: 1.45;
-        letter-spacing: normal;
+        font-size: 0.95rem;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1.5;
+        color: var(--mg-text-muted);
+      }
+      /* Repeat mode — display-weight serif echo of a body phrase, not a
+         new annotation. Tufte-style repetition in the gutter. */
+      main .mg-margin[data-content="repeat"] {
+        font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+        font-size: 1.65rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--mg-accent-ink);
+        background: transparent;
+        border-right-color: var(--mg-accent);
+        padding: 0.4rem 0.9rem 0.4rem 0;
+      }
+      main .mg-margin[data-content="repeat"] .mg-mark {
+        background: transparent;
         color: var(--mg-accent);
       }
     }
@@ -68,14 +144,22 @@
       font-size: 1.125rem;
       margin: 0.25rem 0;
     }
-    header .author,
-    header time {
+    header .author {
       display: block;
       font-size: 0.875rem;
       color: var(--mg-text-muted);
       margin-top: 0.25rem;
       font-variant: small-caps;
       letter-spacing: 0.06em;
+    }
+    /* Ratification date: cursive signature, nods to the engrossed original. */
+    header time {
+      display: block;
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 1.65rem;
+      color: var(--mg-accent-ink);
+      margin-top: 0.8rem;
+      letter-spacing: 0.01em;
     }
     h1, h2, h3 {
       font-family: 'Didot', 'Bodoni 72', Georgia, serif;
@@ -127,6 +211,46 @@
     .const p { margin: 0.6rem 0; }
     .const p:first-child { margin-top: 0; }
     .const p:last-child { margin-bottom: 0; }
+
+    /* Override the default mg-dropcap first-letter with a cursive display
+       initial in copperplate revival. Matches the engrossing hand of the
+       1787 original without setting body text in cursive (unreadable). */
+    .mg-dropcap::first-letter {
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 6.5em;
+      font-weight: 400;
+      line-height: 0.78;
+      padding-right: 0.12em;
+      padding-left: 0.05em;
+      margin-top: 0.1em;
+      color: var(--mg-accent-ink);
+    }
+
+    /* Closing signature block — the Constitution's actual closing paragraph
+       rendered in cursive at display weight, centered, with generous air. */
+    .signature {
+      font-family: 'Mrs Saint Delafield', 'Allura', cursive;
+      font-size: 1.8rem;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--mg-accent-ink);
+      margin: 4rem auto 3rem;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--mg-border);
+      border-bottom: 1px solid var(--mg-border);
+      max-width: 34rem;
+    }
+    .signature p { margin: 0.6rem 0; }
+    .signature em {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-variant: small-caps;
+      letter-spacing: 0.08em;
+      color: var(--mg-text-muted);
+      margin-top: 1.25rem;
+    }
   </style>
 </head>
 <body>
@@ -153,7 +277,8 @@ marginalia Lua filter. No Photoshop. No handcrafted HTML. The source
 file is three hundred lines and change; the rendered page is the one
 you’re reading.</p>
 <hr />
-<h2 id="preamble">Preamble</h2>
+<section id="preamble" class="level2">
+<h2>Preamble</h2>
 <div class="mg-dropcap">
 <p>We the People of the United States, in Order to form a more perfect
 Union, establish Justice, insure domestic Tranquility, provide for the
@@ -167,25 +292,32 @@ the document’s purpose but grants no powers of its own; the Supreme
 Court has held it is not itself a source of federal authority
 (<em>Jacobson v. Massachusetts</em>, 197 U.S. 11, 1905).</p>
 </div>
+<div class="mg-margin" data-content="repeat">
+<p>We the People</p>
+</div>
 <p><span class="mg-mark">We the People</span> is the rhetorical hinge:
 sovereignty is declared to rest in the People, not the States. That
 framing would be litigated, fought over, and tested repeatedly in the
 two and a half centuries that followed.</p>
 <hr />
-<h2 id="article-i-the-legislative-power">Article I — The Legislative
-Power</h2>
+</section>
+<section id="article-i-the-legislative-power" class="level2">
+<h2>Article I — The Legislative Power</h2>
 <div class="mg-callout" data-type="note">
 <p><strong>Note:</strong> Article I is the longest article in the
 Constitution, comprising roughly half the original text. Its length
 reflects the Framers’ belief that Congress would be the most powerful
 branch — and the one most in need of enumerated limits.</p>
 </div>
-<h3 id="section-1-legislative-vesting-clause">Section 1 — Legislative
-Vesting Clause</h3>
+<section id="section-1-legislative-vesting-clause" class="level3">
+<h3>Section 1 — Legislative Vesting Clause</h3>
 <div class="const">
 <p>All legislative Powers herein granted shall be vested in a Congress
 of the United States, which shall consist of a Senate and House of
 Representatives.</p>
+</div>
+<div class="mg-margin" data-content="repeat">
+<p>herein granted</p>
 </div>
 <p>The phrase <span class="mg-mark">herein granted</span> is
 load-bearing. Congress holds only enumerated powers, not a general
@@ -196,8 +328,10 @@ powers</strong>, repeatedly invoked from <em>McCulloch v. Maryland</em>
 (1819) through <em>United States v. Lopez</em> (1995). The modern
 practical scope of the doctrine remains deeply contested.</span></span>.
 Everything not granted is withheld — at least in theory.</p>
-<h3 id="section-8-the-enumerated-powers-selection-important">Section 8 —
-The Enumerated Powers <span class="mg-badge"
+</section>
+<section id="section-8-the-enumerated-powers-selection-important"
+class="level3">
+<h3>Section 8 — The Enumerated Powers <span class="mg-badge"
 data-type="important">selection</span></h3>
 <p>Section 8 is the famous catalog of what Congress may do. Three
 clauses have proven especially consequential.</p>
@@ -241,8 +375,10 @@ Chief Justice John Marshall in <em>McCulloch v. Maryland</em>
 (1819).</p>
 </div>
 <hr />
-<h2 id="article-ii-the-executive-power">Article II — The Executive
-Power</h2>
+</section>
+</section>
+<section id="article-ii-the-executive-power" class="level2">
+<h2>Article II — The Executive Power</h2>
 <div class="const">
 <p>The executive Power shall be vested in a President of the United
 States of America. He shall hold his Office during the Term of four
@@ -252,8 +388,9 @@ Years…</p>
 individual. Every separation-of-powers dispute in American history
 descends from the question of what that sentence means.</p>
 <hr />
-<h2 id="article-iii-the-judicial-power">Article III — The Judicial
-Power</h2>
+</section>
+<section id="article-iii-the-judicial-power" class="level2">
+<h2>Article III — The Judicial Power</h2>
 <div class="const">
 <p>The judicial Power of the United States, shall be vested in one
 supreme Court, and in such inferior Courts as the Congress may from time
@@ -268,20 +405,26 @@ v. Madison</em> (1803), and the rest of American constitutional law
 unfolds from that claim.</p>
 </div>
 <hr />
-<h2 id="the-bill-of-rights-ratified-1791-tip">The Bill of Rights <span
-class="mg-badge" data-type="tip">Ratified 1791</span></h2>
+</section>
+<section id="the-bill-of-rights-ratified-1791-tip" class="level2">
+<h2>The Bill of Rights <span class="mg-badge" data-type="tip">Ratified
+1791</span></h2>
 <p>The first ten amendments were ratified as a bloc on December 15,
 1791, barely two years after the Constitution itself took effect. Their
 purpose was political: to forestall anti-Federalist opposition by
 binding the new federal government to explicit limits. The five
 reproduced here are the most cited.</p>
-<h3 id="first-amendment">First Amendment</h3>
+<section id="first-amendment" class="level3">
+<h3>First Amendment</h3>
 <div class="const">
 <p>Congress shall make no law respecting an establishment of religion,
 or prohibiting the free exercise thereof; or abridging the freedom of
 speech, or of the press; or the right of the people peaceably to
 assemble, and to petition the Government for a redress of
 grievances.</p>
+</div>
+<div class="mg-margin" data-content="repeat">
+<p>Congress shall make no law</p>
 </div>
 <div class="mg-pull">
 <blockquote>
@@ -294,7 +437,9 @@ class="mg-mark">free exercise</span>, <span
 class="mg-mark">speech</span>, <span class="mg-mark">press</span>, and
 <span class="mg-mark">assembly</span> (plus petition, depending on how
 you count).</p>
-<h3 id="second-amendment">Second Amendment</h3>
+</section>
+<section id="second-amendment" class="level3">
+<h3>Second Amendment</h3>
 <div class="const">
 <p>A well regulated Militia, being necessary to the security of a free
 State, the right of the people to keep and bear Arms, shall not be
@@ -308,7 +453,9 @@ ratification. Earlier cases treated the right as militia-linked. Few
 constitutional provisions have been as politically charged or as
 interpretively unstable.</p>
 </div>
-<h3 id="fourth-amendment">Fourth Amendment</h3>
+</section>
+<section id="fourth-amendment" class="level3">
+<h3>Fourth Amendment</h3>
 <div class="const">
 <p>The right of the people to be secure in their persons, houses,
 papers, and effects, against unreasonable searches and seizures, shall
@@ -321,8 +468,10 @@ to be searched, and the persons or things to be seized.</p>
 suppressed at trial — was federalized in <em>Weeks v. United States</em>
 (1914) and extended to the states in <em>Mapp v. Ohio</em> (1961).</p>
 </div>
-<h3 id="fifth-amendment-due-process-note">Fifth Amendment <span
-class="mg-badge" data-type="note">due process</span></h3>
+</section>
+<section id="fifth-amendment-due-process-note" class="level3">
+<h3>Fifth Amendment <span class="mg-badge" data-type="note">due
+process</span></h3>
 <div class="const">
 <p>No person shall be held to answer for a capital, or otherwise
 infamous crime, unless on a presentment or indictment of a Grand Jury,
@@ -334,6 +483,9 @@ witness against himself, nor be deprived of life, liberty, or property,
 without due process of law; nor shall private property be taken for
 public use, without just compensation.</p>
 </div>
+<div class="mg-margin" data-content="repeat">
+<p>due process of law</p>
+</div>
 <p>The Fifth Amendment bundles five distinct protections: <span
 class="mg-mark">grand jury indictment</span>, <span
 class="mg-mark">double jeopardy</span>, <span
@@ -341,7 +493,9 @@ class="mg-mark">self-incrimination</span>, <span class="mg-mark">due
 process</span>, and <span class="mg-mark">takings with just
 compensation</span>. Each has generated its own body of Supreme Court
 doctrine the size of a small library.</p>
-<h3 id="eighth-amendment">Eighth Amendment</h3>
+</section>
+<section id="eighth-amendment" class="level3">
+<h3>Eighth Amendment</h3>
 <div class="const">
 <p>Excessive bail shall not be required, nor excessive fines imposed,
 nor cruel and unusual punishments inflicted.</p>
@@ -350,14 +504,17 @@ nor cruel and unusual punishments inflicted.</p>
 modern litigation — the meaning of “excessive”, the scope of “unusual”,
 and the evolving standards against which cruelty is measured.</p>
 <hr />
-<h2 id="a-constitutional-arc-in-three-amendments">A Constitutional Arc
-in Three Amendments</h2>
+</section>
+</section>
+<section id="a-constitutional-arc-in-three-amendments" class="level2">
+<h2>A Constitutional Arc in Three Amendments</h2>
 <p>Three amendments, ratified within fourteen years, tell the story of
 the most dramatic reversal in American constitutional history — the rise
 and fall of Prohibition.</p>
-<h3 id="amendment-xviii-prohibition-ratified-1919-warning">Amendment
-XVIII — Prohibition <span class="mg-badge" data-type="warning">Ratified
-1919</span></h3>
+<section id="amendment-xviii-prohibition-ratified-1919-warning"
+class="level3">
+<h3>Amendment XVIII — Prohibition <span class="mg-badge"
+data-type="warning">Ratified 1919</span></h3>
 <div class="const">
 <p>After one year from the ratification of this article the manufacture,
 sale, or transportation of intoxicating liquors within, the importation
@@ -373,9 +530,11 @@ experiment, repealed within fourteen years.</p>
 <div class="mg-margin">
 <p>Ratified January 16, 1919.</p>
 </div>
-<h3 id="amendment-xix-womens-suffrage-ratified-1920-tip">Amendment XIX —
-Women’s Suffrage <span class="mg-badge" data-type="tip">Ratified
-1920</span></h3>
+</section>
+<section id="amendment-xix-womens-suffrage-ratified-1920-tip"
+class="level3">
+<h3>Amendment XIX — Women’s Suffrage <span class="mg-badge"
+data-type="tip">Ratified 1920</span></h3>
 <div class="const">
 <p>The right of citizens of the United States to vote shall not be
 denied or abridged by the United States or by any State on account of
@@ -387,12 +546,17 @@ after the Seneca Falls Convention of 1848 first demanded women’s
 suffrage as a federal right. One sentence, twenty-eight words,
 generations of activism.</p>
 </div>
-<h3 id="amendment-xxi-repeal-ratified-1933-important">Amendment XXI —
-Repeal <span class="mg-badge" data-type="important">Ratified
-1933</span></h3>
+</section>
+<section id="amendment-xxi-repeal-ratified-1933-important"
+class="level3">
+<h3>Amendment XXI — Repeal <span class="mg-badge"
+data-type="important">Ratified 1933</span></h3>
 <div class="const">
 <p>The eighteenth article of amendment to the Constitution of the United
 States is hereby repealed.</p>
+</div>
+<div class="mg-margin" data-content="repeat">
+<p>hereby repealed</p>
 </div>
 <div class="mg-callout" data-type="important">
 <p><strong>Important:</strong> Sixteen words that undid fourteen years
@@ -409,7 +573,19 @@ Constitutional change is slow in theory and, occasionally, astonishingly
 fast in practice.</p>
 </div>
 <hr />
-<h2 id="about-this-edition">About this edition</h2>
+<div class="signature">
+<p>done in Convention by the Unanimous Consent of the States present the
+Seventeenth Day of September in the Year of our Lord one thousand seven
+hundred and Eighty seven and of the Independance of the United States of
+America the Twelfth</p>
+<p><em>— closing paragraph of the Constitution, spelling
+preserved</em></p>
+</div>
+<hr />
+</section>
+</section>
+<section id="about-this-edition" class="level2">
+<h2>About this edition</h2>
 <p>This page exists to demonstrate the <a
 href="https://github.com/andyed/marginalia">marginalia</a> CSS library
 and its <a href="../README.md">pandoc filter</a>. Every component you
@@ -421,12 +597,14 @@ running:</p>
   --from markdown+mark+alerts \
   --lua-filter ../marginalia.lua \
   --template template-local.html \
+  --section-divs \
   --standalone \
   -o us-constitution.html</code></pre>
 <p>Source text: <a
 href="https://www.archives.gov/founding-docs">National Archives Founding
 Documents</a>. Marginalia: <a
 href="https://github.com/andyed/marginalia">github.com/andyed/marginalia</a>.</p>
+</section>
 </main>
 <script src="../../marginalia.js" defer></script>
 </body>
