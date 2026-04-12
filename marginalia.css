@@ -14,10 +14,10 @@
   --mg-accent:      #50b4c8;
   --mg-accent-rgb:  80, 180, 200;
   --mg-accent-ink:  #7dd4e4;
-  --mg-note:        #50b4c8;
-  --mg-tip:         #4caf50;
-  --mg-warning:     #e6a817;
-  --mg-important:   #e05252;
+  --mg-note:        #50b4c8; /* 8.19:1 on #0a0a0f (WCAG AAA border) */
+  --mg-tip:         #66bb6a; /* 8.35:1 on #0a0a0f — bumped from #4caf50 (7.11) */
+  --mg-warning:     #e6a817; /* 9.38:1 on #0a0a0f */
+  --mg-important:   #ff8282; /* 8.25:1 on #0a0a0f — bumped from #e05252 (5.17) */
   --mg-radius:      4px;
   --mg-font-mono:   'SF Mono', 'Fira Code', Consolas, 'Liberation Mono', monospace;
 }
@@ -33,10 +33,10 @@
   --mg-accent:      #0e7490;
   --mg-accent-rgb:  14, 116, 144;
   --mg-accent-ink:  #0e7490;
-  --mg-note:        #0e7490;
-  --mg-tip:         #2e7d32;
-  --mg-warning:     #c67f00;
-  --mg-important:   #c62828;
+  --mg-note:        #164e63; /* 8.73:1 on #fafafa — bumped from #0e7490 (5.13) */
+  --mg-tip:         #14532d; /* 8.73:1 on #fafafa — bumped from #2e7d32 (4.91) */
+  --mg-warning:     #78350f; /* 8.69:1 on #fafafa — bumped from #c67f00 (3.13 ← AA fail) */
+  --mg-important:   #7f1d1d; /* 9.60:1 on #fafafa — bumped from #c62828 (5.39) */
 }
 
 @media (prefers-color-scheme: light) {
@@ -49,10 +49,10 @@
     --mg-accent:      #0e7490;
     --mg-accent-rgb:  14, 116, 144;
     --mg-accent-ink:  #0e7490;
-    --mg-note:        #0e7490;
-    --mg-tip:         #2e7d32;
-    --mg-warning:     #c67f00;
-    --mg-important:   #c62828;
+    --mg-note:        #164e63; /* 8.73:1 on #fafafa */
+    --mg-tip:         #14532d; /* 8.73:1 on #fafafa */
+    --mg-warning:     #78350f; /* 8.69:1 on #fafafa */
+    --mg-important:   #7f1d1d; /* 9.60:1 on #fafafa */
   }
 }
 
@@ -696,38 +696,6 @@ article, section, .mg-fn-scope, body {
   }
   .mg-spread .mg-pull {
     transform: none;
-  }
-}
-
-
-/* ── 15. Center callout — dual-float text wrap ────────────────────────── */
-/* Left float via ::before, right float via .mg-center-r (must precede text in DOM).
-   Callout sits absolutely positioned over the carved space. */
-
-.mg-center-wrap { position: relative; --mg-center-w: 50%; --mg-center-h: auto; }
-
-.mg-center-wrap::before, .mg-center-r {
-  content: ''; display: block;
-  width: 50%; height: var(--mg-center-h, 8rem);
-}
-.mg-center-wrap::before { float: left;  shape-outside: inset(0 0 0 calc(100% - var(--mg-center-w))); }
-.mg-center-r             { float: right; shape-outside: inset(0 calc(100% - var(--mg-center-w)) 0 0); }
-
-.mg-center-wrap > .mg-callout, .mg-center-wrap > .mg-pull {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: var(--mg-center-w); float: none; margin: 0; text-align: center;
-  border-left: none; border-top: 3px solid var(--mg-accent);
-  border-bottom: 3px solid var(--mg-accent); border-radius: 0;
-  shape-outside: none; padding: 1rem 1.5rem;
-}
-
-@media (max-width: 720px) {
-  .mg-center-wrap::before, .mg-center-r { display: none; }
-  .mg-center-wrap > .mg-callout, .mg-center-wrap > .mg-pull {
-    position: static; width: auto; transform: none; margin: 1.5rem 0;
-    border-top: none; border-bottom: none;
-    border-left: 3px solid var(--mg-accent); border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
-    text-align: left;
   }
 }
 
