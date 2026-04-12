@@ -28,9 +28,34 @@ $endif$
       margin: 0 auto;
       padding: 3rem 1.5rem 6rem;
     }
-    /* Establish the margin-note scope so [!MARGIN] floats into the gutter
-       on wide viewports. Marginalia needs a positioned ancestor for this. */
-    main { position: relative; }
+    main { display: block; }
+
+    /* Override the desktop gutter-float treatment for .mg-margin on this page.
+       The default 1200px+ rule uses position:absolute with left:-410px, which
+       requires a much wider content column + gutter than our 44rem reader
+       layout can provide — without the override, all margin notes stack on
+       top of each other at the top-left of main. Keep the inline styling
+       from the base rule at every viewport width. */
+    @media (min-width: 1200px) {
+      .mg-margin {
+        position: static;
+        width: auto;
+        left: auto;
+        top: auto;
+        padding: 1rem 1.25rem;
+        border-left: 3px solid rgba(var(--mg-accent-rgb), 0.4);
+        border-right: none;
+        border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+        background: rgba(var(--mg-accent-rgb), 0.04);
+        text-align: left;
+        transform: none;
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.45;
+        letter-spacing: normal;
+        color: var(--mg-accent);
+      }
+    }
     header {
       border-bottom: 1px solid var(--mg-border);
       padding-bottom: 2rem;
@@ -119,7 +144,7 @@ $endfor$
   </style>
 </head>
 <body>
-<main class="mg-margin-scope">
+<main>
 $if(title)$
 <header>
   <h1>$title$</h1>
