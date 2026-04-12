@@ -28,11 +28,11 @@
   --mg-bg:          #fafafa;
   --mg-bg2:         #f0f0f4;
   --mg-text:        #1a1a2e;
-  --mg-text-muted:  #555570;
+  --mg-text-muted:  #404055; /* 9.66:1 on #fafafa — bumped from #555570 (6.89) */
   --mg-border:      rgba(0, 0, 0, 0.1);
-  --mg-accent:      #0e7490;
+  --mg-accent:      #0e7490; /* kept — border/accent role only, not used as text */
   --mg-accent-rgb:  14, 116, 144;
-  --mg-accent-ink:  #0e7490;
+  --mg-accent-ink:  #0c4a6e; /* 9.06:1 on #fafafa — bumped from #0e7490 (5.13) */
   --mg-note:        #164e63; /* 8.73:1 on #fafafa — bumped from #0e7490 (5.13) */
   --mg-tip:         #14532d; /* 8.73:1 on #fafafa — bumped from #2e7d32 (4.91) */
   --mg-warning:     #78350f; /* 8.69:1 on #fafafa — bumped from #c67f00 (3.13 ← AA fail) */
@@ -44,11 +44,11 @@
     --mg-bg:          #fafafa;
     --mg-bg2:         #f0f0f4;
     --mg-text:        #1a1a2e;
-    --mg-text-muted:  #555570;
+    --mg-text-muted:  #404055; /* 9.66:1 on #fafafa */
     --mg-border:      rgba(0, 0, 0, 0.1);
-    --mg-accent:      #0e7490;
+    --mg-accent:      #0e7490; /* border/accent only */
     --mg-accent-rgb:  14, 116, 144;
-    --mg-accent-ink:  #0e7490;
+    --mg-accent-ink:  #0c4a6e; /* 9.06:1 on #fafafa */
     --mg-note:        #164e63; /* 8.73:1 on #fafafa */
     --mg-tip:         #14532d; /* 8.73:1 on #fafafa */
     --mg-warning:     #78350f; /* 8.69:1 on #fafafa */
