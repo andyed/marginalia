@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="" data-mg-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="pandoc + marginalia">
+  <meta name="author" content="Marginalia Pandoc Demo">
+  <title>The United States Constitution</title>
+  <link rel="stylesheet" href="../../marginalia.css">
+  <style>
+    /* Page-level layout for the reader's edition. Marginalia styles callouts
+       and typographic affordances; this sets the outer container, max width,
+       headings, and the magazine-style scope for margin notes.            */
+    html { background: var(--mg-bg); color: var(--mg-text); }
+    body {
+      font-family: Georgia, 'New York', 'Times New Roman', serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    /* Establish the margin-note scope so [!MARGIN] floats into the gutter
+       on wide viewports. Marginalia needs a positioned ancestor for this. */
+    main { position: relative; }
+    header {
+      border-bottom: 1px solid var(--mg-border);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+      font-size: 2.75rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin: 0 0 0.5rem;
+      color: var(--mg-text);
+    }
+    header .subtitle {
+      font-style: italic;
+      color: var(--mg-text-muted);
+      font-size: 1.125rem;
+      margin: 0.25rem 0;
+    }
+    header .author,
+    header time {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--mg-text-muted);
+      margin-top: 0.25rem;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    }
+    h1, h2, h3 {
+      font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+      font-weight: 400;
+      color: var(--mg-text);
+    }
+    h1 { font-size: 2rem; margin-top: 3rem; }
+    h2 {
+      font-size: 1.625rem;
+      margin-top: 2.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--mg-border);
+    }
+    h3 { font-size: 1.25rem; margin-top: 2rem; font-style: italic; }
+    p { margin: 1rem 0; }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--mg-border);
+      margin: 3rem auto;
+      width: 50%;
+    }
+    a { color: var(--mg-accent-ink); }
+    a:hover { color: var(--mg-accent); }
+    /* Give the footnote popover a readable width and dark background. */
+    .mg-fn-body {
+      max-width: 24rem;
+      background: var(--mg-bg2);
+      border-left: 3px solid var(--mg-accent);
+      padding: 0.75rem 1rem;
+    }
+    /* Slight breathing room above horizontal rules after callouts. */
+    .mg-callout + hr,
+    .mg-sidebar + hr,
+    .mg-pull + hr { margin-top: 2rem; }
+
+    /* Constitutional text blocks — reserved for verbatim source material.
+       Using pandoc fenced-div syntax `::: const` keeps these distinct from
+       blockquote pull quotes. Clean bordered indent, no 3D perspective. */
+    .const {
+      margin: 1.5rem 0 1.75rem;
+      padding: 0.9rem 1rem 0.9rem 1.5rem;
+      border-left: 3px solid var(--mg-accent);
+      background: rgba(var(--mg-accent-rgb), 0.04);
+      border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--mg-text);
+    }
+    .const p { margin: 0.6rem 0; }
+    .const p:first-child { margin-top: 0; }
+    .const p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+<main class="mg-margin-scope">
+<header>
+  <h1>The United States Constitution</h1>
+  <p class="subtitle">A reader’s edition with marginalia</p>
+  <p class="author">Marginalia Pandoc Demo</p>
+  <time>Ratified June 21, 1788</time>
+</header>
+<p>A curated reader’s edition showcasing marginalia’s typographic
+affordances — dropcaps, pull quotes, callouts in four colors, sidebars,
+margin notes, badges, inline highlights, and footnote popovers — applied
+to the founding document of the United States. Source text is verbatim
+from the <a
+href="https://www.archives.gov/founding-docs/constitution-transcript">National
+Archives transcript</a>.</p>
+<p><span class="mg-badge">Ratified 1788</span> <span class="mg-badge"
+data-type="tip">27 amendments</span> <span class="mg-badge">~4,500
+original words</span></p>
+<p>Every visual affordance on this page was generated from plain
+markdown by running <code class="mg-inline-code">pandoc</code> with the
+marginalia Lua filter. No Photoshop. No handcrafted HTML. The source
+file is three hundred lines and change; the rendered page is the one
+you’re reading.</p>
+<hr />
+<h2 id="preamble">Preamble</h2>
+<div class="mg-dropcap">
+<p>We the People of the United States, in Order to form a more perfect
+Union, establish Justice, insure domestic Tranquility, provide for the
+common defence, promote the general Welfare, and secure the Blessings of
+Liberty to ourselves and our Posterity, do ordain and establish this
+Constitution for the United States of America.</p>
+</div>
+<div class="mg-sidebar">
+<p>The Preamble is a single sentence — fifty-two words long. It states
+the document’s purpose but grants no powers of its own; the Supreme
+Court has held it is not itself a source of federal authority
+(<em>Jacobson v. Massachusetts</em>, 197 U.S. 11, 1905).</p>
+</div>
+<p><span class="mg-mark">We the People</span> is the rhetorical hinge:
+sovereignty is declared to rest in the People, not the States. That
+framing would be litigated, fought over, and tested repeatedly in the
+two and a half centuries that followed.</p>
+<hr />
+<h2 id="article-i-the-legislative-power">Article I — The Legislative
+Power</h2>
+<div class="mg-callout" data-type="note">
+<p><strong>Note:</strong> Article I is the longest article in the
+Constitution, comprising roughly half the original text. Its length
+reflects the Framers’ belief that Congress would be the most powerful
+branch — and the one most in need of enumerated limits.</p>
+</div>
+<h3 id="section-1-legislative-vesting-clause">Section 1 — Legislative
+Vesting Clause</h3>
+<div class="const">
+<p>All legislative Powers herein granted shall be vested in a Congress
+of the United States, which shall consist of a Senate and House of
+Representatives.</p>
+</div>
+<p>The phrase <span class="mg-mark">herein granted</span> is
+load-bearing. Congress holds only enumerated powers, not a general
+legislative authority<span
+class="mg-fn"><a class="mg-fn-ref" tabindex="0"></a><span
+class="mg-fn-body">This is the core doctrine of <strong>enumerated
+powers</strong>, repeatedly invoked from <em>McCulloch v. Maryland</em>
+(1819) through <em>United States v. Lopez</em> (1995). The modern
+practical scope of the doctrine remains deeply contested.</span></span>.
+Everything not granted is withheld — at least in theory.</p>
+<h3 id="section-8-the-enumerated-powers-selection-important">Section 8 —
+The Enumerated Powers <span class="mg-badge"
+data-type="important">selection</span></h3>
+<p>Section 8 is the famous catalog of what Congress may do. Three
+clauses have proven especially consequential.</p>
+<p><strong>Clause 1 — Taxing and Spending Power</strong></p>
+<div class="const">
+<p>The Congress shall have Power To lay and collect Taxes, Duties,
+Imposts and Excises, to pay the Debts and provide for the common Defence
+and general Welfare of the United States; but all Duties, Imposts and
+Excises shall be uniform throughout the United States.</p>
+</div>
+<div class="mg-callout" data-type="tip">
+<p><strong>Tip:</strong> The “general Welfare” language looks unlimited
+but was held in <em>United States v. Butler</em> (1936) to be
+constrained to spending that furthers enumerated ends. It remains one of
+the most litigated phrases in American constitutional law.</p>
+</div>
+<p><strong>Clause 3 — Commerce Clause</strong></p>
+<div class="const">
+<p>To regulate Commerce with foreign Nations, and among the several
+States, and with the Indian Tribes;</p>
+</div>
+<div class="mg-callout" data-type="important">
+<p><strong>Important:</strong> The Commerce Clause is the single most
+expansively interpreted phrase in the Constitution. Its reach grew
+dramatically in <em>Wickard v. Filburn</em> (1942), contracted in
+<em>United States v. Lopez</em> (1995), and became the constitutional
+basis for civil-rights enforcement (<em>Heart of Atlanta Motel v. United
+States</em>, 1964). Most modern federal regulation traces its authority
+here.</p>
+</div>
+<p><strong>Clause 18 — Necessary and Proper Clause</strong></p>
+<div class="const">
+<p>To make all Laws which shall be necessary and proper for carrying
+into Execution the foregoing Powers, and all other Powers vested by this
+Constitution in the Government of the United States, or in any
+Department or Officer thereof.</p>
+</div>
+<div class="mg-margin">
+<p>Also called the <em>Elastic Clause</em>. First expansively read by
+Chief Justice John Marshall in <em>McCulloch v. Maryland</em>
+(1819).</p>
+</div>
+<hr />
+<h2 id="article-ii-the-executive-power">Article II — The Executive
+Power</h2>
+<div class="const">
+<p>The executive Power shall be vested in a President of the United
+States of America. He shall hold his Office during the Term of four
+Years…</p>
+</div>
+<p>One sentence vesting the entire executive branch in a single
+individual. Every separation-of-powers dispute in American history
+descends from the question of what that sentence means.</p>
+<hr />
+<h2 id="article-iii-the-judicial-power">Article III — The Judicial
+Power</h2>
+<div class="const">
+<p>The judicial Power of the United States, shall be vested in one
+supreme Court, and in such inferior Courts as the Congress may from time
+to time ordain and establish.</p>
+</div>
+<div class="mg-sidebar">
+<p>Article III is strikingly thin: it establishes the Supreme Court,
+leaves the inferior federal courts to Congress, defines treason, and
+does little else. Judicial review — the power to strike down legislation
+— is nowhere mentioned. The Court claimed it for itself in <em>Marbury
+v. Madison</em> (1803), and the rest of American constitutional law
+unfolds from that claim.</p>
+</div>
+<hr />
+<h2 id="the-bill-of-rights-ratified-1791-tip">The Bill of Rights <span
+class="mg-badge" data-type="tip">Ratified 1791</span></h2>
+<p>The first ten amendments were ratified as a bloc on December 15,
+1791, barely two years after the Constitution itself took effect. Their
+purpose was political: to forestall anti-Federalist opposition by
+binding the new federal government to explicit limits. The five
+reproduced here are the most cited.</p>
+<h3 id="first-amendment">First Amendment</h3>
+<div class="const">
+<p>Congress shall make no law respecting an establishment of religion,
+or prohibiting the free exercise thereof; or abridging the freedom of
+speech, or of the press; or the right of the people peaceably to
+assemble, and to petition the Government for a redress of
+grievances.</p>
+</div>
+<div class="mg-pull">
+<blockquote>
+<p>Congress shall make no law…</p>
+</blockquote>
+</div>
+<p>Five distinct rights in forty-five words: <span
+class="mg-mark">religious establishment</span>, <span
+class="mg-mark">free exercise</span>, <span
+class="mg-mark">speech</span>, <span class="mg-mark">press</span>, and
+<span class="mg-mark">assembly</span> (plus petition, depending on how
+you count).</p>
+<h3 id="second-amendment">Second Amendment</h3>
+<div class="const">
+<p>A well regulated Militia, being necessary to the security of a free
+State, the right of the people to keep and bear Arms, shall not be
+infringed.</p>
+</div>
+<div class="mg-callout" data-type="important">
+<p><strong>Important:</strong> The scope of the individual right was not
+definitively resolved by the Supreme Court until <em>District of
+Columbia v. Heller</em> (2008) — more than two centuries after
+ratification. Earlier cases treated the right as militia-linked. Few
+constitutional provisions have been as politically charged or as
+interpretively unstable.</p>
+</div>
+<h3 id="fourth-amendment">Fourth Amendment</h3>
+<div class="const">
+<p>The right of the people to be secure in their persons, houses,
+papers, and effects, against unreasonable searches and seizures, shall
+not be violated, and no Warrants shall issue, but upon probable cause,
+supported by Oath or affirmation, and particularly describing the place
+to be searched, and the persons or things to be seized.</p>
+</div>
+<div class="mg-margin">
+<p>The modern exclusionary rule — evidence from unreasonable searches is
+suppressed at trial — was federalized in <em>Weeks v. United States</em>
+(1914) and extended to the states in <em>Mapp v. Ohio</em> (1961).</p>
+</div>
+<h3 id="fifth-amendment-due-process-note">Fifth Amendment <span
+class="mg-badge" data-type="note">due process</span></h3>
+<div class="const">
+<p>No person shall be held to answer for a capital, or otherwise
+infamous crime, unless on a presentment or indictment of a Grand Jury,
+except in cases arising in the land or naval forces, or in the Militia,
+when in actual service in time of War or public danger; nor shall any
+person be subject for the same offence to be twice put in jeopardy of
+life or limb; nor shall be compelled in any criminal case to be a
+witness against himself, nor be deprived of life, liberty, or property,
+without due process of law; nor shall private property be taken for
+public use, without just compensation.</p>
+</div>
+<p>The Fifth Amendment bundles five distinct protections: <span
+class="mg-mark">grand jury indictment</span>, <span
+class="mg-mark">double jeopardy</span>, <span
+class="mg-mark">self-incrimination</span>, <span class="mg-mark">due
+process</span>, and <span class="mg-mark">takings with just
+compensation</span>. Each has generated its own body of Supreme Court
+doctrine the size of a small library.</p>
+<h3 id="eighth-amendment">Eighth Amendment</h3>
+<div class="const">
+<p>Excessive bail shall not be required, nor excessive fines imposed,
+nor cruel and unusual punishments inflicted.</p>
+</div>
+<p>Twenty-one words. Every phrase has been the subject of extensive
+modern litigation — the meaning of “excessive”, the scope of “unusual”,
+and the evolving standards against which cruelty is measured.</p>
+<hr />
+<h2 id="a-constitutional-arc-in-three-amendments">A Constitutional Arc
+in Three Amendments</h2>
+<p>Three amendments, ratified within fourteen years, tell the story of
+the most dramatic reversal in American constitutional history — the rise
+and fall of Prohibition.</p>
+<h3 id="amendment-xviii-prohibition-ratified-1919-warning">Amendment
+XVIII — Prohibition <span class="mg-badge" data-type="warning">Ratified
+1919</span></h3>
+<div class="const">
+<p>After one year from the ratification of this article the manufacture,
+sale, or transportation of intoxicating liquors within, the importation
+thereof into, or the exportation thereof from the United States and all
+territory subject to the jurisdiction thereof for beverage purposes is
+hereby prohibited.</p>
+</div>
+<div class="mg-callout" data-type="warning">
+<p><strong>Warning:</strong> The only constitutional amendment ever to
+restrict a behavior rather than grant or protect a right. A failed
+experiment, repealed within fourteen years.</p>
+</div>
+<div class="mg-margin">
+<p>Ratified January 16, 1919.</p>
+</div>
+<h3 id="amendment-xix-womens-suffrage-ratified-1920-tip">Amendment XIX —
+Women’s Suffrage <span class="mg-badge" data-type="tip">Ratified
+1920</span></h3>
+<div class="const">
+<p>The right of citizens of the United States to vote shall not be
+denied or abridged by the United States or by any State on account of
+sex.</p>
+</div>
+<div class="mg-callout" data-type="note">
+<p><strong>Note:</strong> Ratified August 18, 1920 — seventy-two years
+after the Seneca Falls Convention of 1848 first demanded women’s
+suffrage as a federal right. One sentence, twenty-eight words,
+generations of activism.</p>
+</div>
+<h3 id="amendment-xxi-repeal-ratified-1933-important">Amendment XXI —
+Repeal <span class="mg-badge" data-type="important">Ratified
+1933</span></h3>
+<div class="const">
+<p>The eighteenth article of amendment to the Constitution of the United
+States is hereby repealed.</p>
+</div>
+<div class="mg-callout" data-type="important">
+<p><strong>Important:</strong> Sixteen words that undid fourteen years
+of Prohibition. The Twenty-first is the only amendment to explicitly
+repeal another, and the only one ratified by state conventions rather
+than state legislatures.</p>
+</div>
+<div class="mg-sidebar">
+<p>The Prohibition arc is instructive for anyone who assumes the
+Constitution is static. In fourteen years the country added, enforced,
+and completely reversed a major amendment — faster than most
+contemporary legislation can pass through a single Congress.
+Constitutional change is slow in theory and, occasionally, astonishingly
+fast in practice.</p>
+</div>
+<hr />
+<h2 id="about-this-edition">About this edition</h2>
+<p>This page exists to demonstrate the <a
+href="https://github.com/andyed/marginalia">marginalia</a> CSS library
+and its <a href="../README.md">pandoc filter</a>. Every component you
+have seen — the dropcap at the Preamble, the four-color callouts, the
+sidebars, the margin notes, the pull quote, the inline highlights, the
+badges, and the footnote popover — was generated from plain markdown by
+running:</p>
+<pre class="mg-code" data-lang="bash"><code>pandoc us-constitution.md \
+  --from markdown+mark+alerts \
+  --lua-filter ../marginalia.lua \
+  --template template-local.html \
+  --standalone \
+  -o us-constitution.html</code></pre>
+<p>Source text: <a
+href="https://www.archives.gov/founding-docs">National Archives Founding
+Documents</a>. Marginalia: <a
+href="https://github.com/andyed/marginalia">github.com/andyed/marginalia</a>.</p>
+</main>
+<script src="../../marginalia.js" defer></script>
+</body>
+</html>

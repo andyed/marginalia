@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="$lang$"$if(dir)$ dir="$dir$"$endif$ data-mg-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="pandoc + marginalia">
+$for(author-meta)$
+  <meta name="author" content="$author-meta$">
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$">
+$endif$
+$if(description-meta)$
+  <meta name="description" content="$description-meta$">
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <link rel="stylesheet" href="../../marginalia.css">
+  <style>
+    /* Page-level layout for the reader's edition. Marginalia styles callouts
+       and typographic affordances; this sets the outer container, max width,
+       headings, and the magazine-style scope for margin notes.            */
+    html { background: var(--mg-bg); color: var(--mg-text); }
+    body {
+      font-family: Georgia, 'New York', 'Times New Roman', serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+    /* Establish the margin-note scope so [!MARGIN] floats into the gutter
+       on wide viewports. Marginalia needs a positioned ancestor for this. */
+    main { position: relative; }
+    header {
+      border-bottom: 1px solid var(--mg-border);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+      font-size: 2.75rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin: 0 0 0.5rem;
+      color: var(--mg-text);
+    }
+    header .subtitle {
+      font-style: italic;
+      color: var(--mg-text-muted);
+      font-size: 1.125rem;
+      margin: 0.25rem 0;
+    }
+    header .author,
+    header time {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--mg-text-muted);
+      margin-top: 0.25rem;
+      font-variant: small-caps;
+      letter-spacing: 0.06em;
+    }
+    h1, h2, h3 {
+      font-family: 'Didot', 'Bodoni 72', Georgia, serif;
+      font-weight: 400;
+      color: var(--mg-text);
+    }
+    h1 { font-size: 2rem; margin-top: 3rem; }
+    h2 {
+      font-size: 1.625rem;
+      margin-top: 2.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--mg-border);
+    }
+    h3 { font-size: 1.25rem; margin-top: 2rem; font-style: italic; }
+    p { margin: 1rem 0; }
+    hr {
+      border: 0;
+      border-top: 1px solid var(--mg-border);
+      margin: 3rem auto;
+      width: 50%;
+    }
+    a { color: var(--mg-accent-ink); }
+    a:hover { color: var(--mg-accent); }
+    /* Give the footnote popover a readable width and dark background. */
+    .mg-fn-body {
+      max-width: 24rem;
+      background: var(--mg-bg2);
+      border-left: 3px solid var(--mg-accent);
+      padding: 0.75rem 1rem;
+    }
+    /* Slight breathing room above horizontal rules after callouts. */
+    .mg-callout + hr,
+    .mg-sidebar + hr,
+    .mg-pull + hr { margin-top: 2rem; }
+
+    /* Constitutional text blocks — reserved for verbatim source material.
+       Using pandoc fenced-div syntax `::: const` keeps these distinct from
+       blockquote pull quotes. Clean bordered indent, no 3D perspective. */
+    .const {
+      margin: 1.5rem 0 1.75rem;
+      padding: 0.9rem 1rem 0.9rem 1.5rem;
+      border-left: 3px solid var(--mg-accent);
+      background: rgba(var(--mg-accent-rgb), 0.04);
+      border-radius: 0 var(--mg-radius) var(--mg-radius) 0;
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--mg-text);
+    }
+    .const p { margin: 0.6rem 0; }
+    .const p:first-child { margin-top: 0; }
+    .const p:last-child { margin-bottom: 0; }
+$for(css)$
+    @import url("$css$");
+$endfor$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+  </style>
+</head>
+<body>
+<main class="mg-margin-scope">
+$if(title)$
+<header>
+  <h1>$title$</h1>
+$if(subtitle)$
+  <p class="subtitle">$subtitle$</p>
+$endif$
+$for(author)$
+  <p class="author">$author$</p>
+$endfor$
+$if(date)$
+  <time>$date$</time>
+$endif$
+</header>
+$endif$
+$body$
+</main>
+<script src="../../marginalia.js" defer></script>
+</body>
+</html>
