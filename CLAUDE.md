@@ -60,77 +60,8 @@ screenshots/        README visuals
 pandoc/             Lua filter + HTML template + Constitution example
 ```
 
-## Dead ends — things that were tried and abandoned
+## Dead ends
 
-These sections are here so future contributors (human or AI) don't
-reinvent dead ends or wonder why an obvious-looking approach isn't
-already implemented.
+Things tried and abandoned, so they don't get reinvented.
 
-### `.mg-center-wrap` — dual-float centered callout (removed 2026-04)
-
-**Intent.** A callout that sits in the *center* of a column of body
-text with text wrapping around it on *both* sides — left gutter and
-right gutter flowing, callout floating in the middle. A magazine-spread
-aesthetic.
-
-**Approach.** Dual-float with `shape-outside`:
-
-```css
-.mg-center-wrap::before { float: left;  shape-outside: inset(...); }
-.mg-center-r             { float: right; shape-outside: inset(...); }
-.mg-center-wrap > .mg-callout {
-  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-}
-```
-
-A `::before` float on the left and a sibling `.mg-center-r` float on
-the right, each with a `shape-outside` cutout on the inward-facing
-edge, carving a centered rectangle out of the text flow. The callout
-itself was `position: absolute` over that rectangle.
-
-**Why it never worked.**
-
-1. **Dual-float with matched shape-outside is fragile.** The two
-   carve-outs have to align pixel-perfectly; any difference in height
-   between the left and right pseudo-elements breaks the illusion. A
-   `--mg-center-h` custom property was required per-callout to match
-   heights manually — the opposite of "no configuration."
-2. **`position: absolute` removes the callout from flow entirely.**
-   Text wraps around the *floats*, not the callout. If the callout is
-   taller than the floats' height, body text flows under it. If
-   shorter, there's dead vertical space below the callout inside the
-   carved region.
-3. **Absolute positioning breaks at any responsive breakpoint.** The
-   mobile fallback (`@media (max-width: 720px)`) had to tear the whole
-   thing down and fall back to a plain left-bordered callout — which
-   means the "magazine spread" aesthetic only existed on desktop,
-   requiring a totally different mental model for two-thirds of
-   viewers.
-4. **Shape-outside + absolute positioning + `transform: translateX`**
-   stacks fragile CSS features whose interactions are undefined in the
-   spec. Browser rendering was inconsistent between Chrome and Safari.
-
-**Alternatives that would work better if someone tries this again.**
-
-- **CSS multi-column with `column-span: all`** — the standard way to
-  interrupt a multi-column text flow with a full-width callout. Native
-  browser support, predictable reflow, mobile-friendly. Requires the
-  surrounding text to be in a `column-count` or `column-width`
-  container, which is a bigger layout commitment.
-- **CSS Grid with a named area** — if the host page uses a grid,
-  define a centered column area and drop the callout into it. Works
-  per-template but isn't a drop-in library component.
-- **Full-bleed horizontal break** — forget centering within text.
-  Interrupt the column with a block that spans the full reading
-  width, bordered top and bottom (like a pull quote but horizontal).
-  The signature `.mg-pull` already has the 3D perspective; this would
-  be its flat cousin. Simpler and survives mobile.
-- **Sidenote sidebar** — give up the "text on both sides" ambition and
-  float the callout into the right (or left) margin with `.mg-margin`.
-  This is what the library already does well.
-
-**Lesson.** Fragile layout tricks that require per-instance hand-tuning
-(explicit heights, manual shape coordination, breakpoint-specific
-fallbacks) don't belong in a zero-configuration component library.
-When the happy path needs more code than the fallback path, the happy
-path is wrong.
+- **`.mg-center-wrap` — dual-float centered callout.** Removed 2026-04. Tried to float a callout in the center of body text with text wrapping on both sides (magazine spread), using `::before` float left + `.mg-center-r` float right + matched `shape-outside` cutouts + `position: absolute` callout. Required a `--mg-center-h` per instance to sync heights, fell apart when the callout didn't match float height, needed a totally different mobile fallback, and stacked fragile CSS features (shape-outside + absolute + transform) with undefined interactions. If someone needs this again: use CSS multi-column with `column-span: all`, or accept a full-bleed horizontal break (flat `mg-pull`), or just use `mg-margin` for sidenotes. **Lesson:** layout tricks that need per-instance hand-tuning don't belong in a zero-config library.
