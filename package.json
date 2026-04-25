@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andyed/marginalia.git"
+    "url": "git+https://github.com/andyed/marginalia.git"
   },
   "homepage": "https://andyed.github.io/marginalia/",
   "scripts": {

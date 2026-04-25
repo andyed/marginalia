@@ -20,12 +20,12 @@ JS is optional. All components work without it.
 ### Vite / npm
 
 ```bash
-npm install marginalia
+npm install @andyed/marginalia
 ```
 
 ```js
-import 'marginalia/marginalia.css';
-import { convert } from 'marginalia/md';
+import '@andyed/marginalia/marginalia.css';
+import { convert } from '@andyed/marginalia/md';
 
 document.querySelector('#content').innerHTML = convert(markdownString);
 ```
